@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="店面图:"
+                android:layout_marginRight="12dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/setMyshop_image_shop"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/add" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/cart_listview_gap" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="展示图:"
+                android:layout_marginRight="12dp"
+                android:textSize="16sp" />
+
+            <GridView
+                android:id="@+id/setMyshop_grid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns="3" >
+            </GridView>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/cart_listview_gap" />
+
+
+            <Button
+                android:id="@+id/btn_sare"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:text="保存"
+                android:textColor="@color/dise_bai"
+                android:background="@drawable/press_rectangle_2small_lanlv" />
+
+
+</LinearLayout>

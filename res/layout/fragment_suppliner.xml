@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   	<TextView 
+   	    android:layout_width="match_parent"
+   	    android:layout_height="match_parent"
+   	    android:gravity="center"
+   	    android:text="正在努力开发中，敬请期待。。。"
+   	    android:textSize="20sp"
+   	    android:textColor="@color/lanlv"/>
+   	
+    <RelativeLayout
+        android:id="@+id/RelativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/lanlv"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="供应商"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/dise_bai"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/btn_classify"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:src="@drawable/title_feilei"
+             />
+
+        <TextView
+            android:id="@+id/btn_search"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/btn_classify"
+            android:gravity="center"
+            android:text="搜索"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/dise_bai"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/btn_search_image"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/btn_classify" >
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/title_search" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/RelativeLayout2"
+        android:background="@color/lanlv"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="6dp"
+            android:layout_toLeftOf="@+id/btn_search_sure"
+            android:background="@drawable/top_search_bg" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:src="@drawable/lib_story_img_search_bt" />
+
+            <EditText
+                android:id="@+id/edit_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/imageView1"
+                android:background="@null"
+                android:ems="10"
+                android:hint="搜索" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:src="@drawable/delete_icon_press"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/btn_search_sure"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="确定"
+            android:layout_marginRight="6dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/dise_bai"
+            android:textSize="16sp" />
+    </RelativeLayout>
+<LinearLayout
+        android:id="@+id/classify"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/RelativeLayout2"
+        android:background="@color/dise_bai"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <RelativeLayout
+                android:id="@+id/btn_order_newest"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/text_order_newest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="最新"
+                android:textSize="18sp"
+                android:textColor="@color/hui_to_lanlv" />
+            
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/btn_order_price"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/text_order_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="价格"
+                android:textColor="@color/hui_to_lanlv"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/image_order_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/text_order_price"
+                android:src="@drawable/sort" />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/btn_order_sales"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/text_order_sales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="销量"
+                android:textColor="@color/hui_to_lanlv"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/image_order_sales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/text_order_sales"
+                android:src="@drawable/sort" />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/btn_order_com"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/text_order_com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="佣金"
+                android:textColor="@color/hui_to_lanlv"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/image_order_com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/text_order_com"
+                android:src="@drawable/sort" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/search"
+        android:scaleType="fitXY"
+        android:src="@drawable/cart_listview_gap"
+        android:visibility="gone" />
+
+    <GridView
+        android:id="@+id/gridView"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageView3"
+        android:numColumns="2" >
+    </GridView>
+    <!-- <com.fujianmenggou.ckw.PullToRefreshListView
+     android:id="@+id/listView"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_below="@+id/imageView3"
+     android:layout_centerHorizontal="true" 
+     android:visibility="gone">
+ </com.fujianmenggou.ckw.PullToRefreshListView> -->
+ <LinearLayout
+            android:id="@+id/menu_classify"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:background="#333C3C3C"
+         android:visibility="gone"
+        >
+
+        <RelativeLayout
+            android:id="@+id/menu_null"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" 
+            android:background="@null"
+            >
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/lstView_classify"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none"
+            android:layout_marginTop="48dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            >
+        </ListView>
+
+    </LinearLayout>
+ <include
+     android:visibility="gone"
+            android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/item_loading" />
+ <include
+     android:visibility="gone"
+     android:id="@+id/search_null"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_below="@+id/search"
+     layout="@layout/item_search" />
+ <include
+     android:visibility="gone"
+            android:id="@+id/loading_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/item_loading_refresh" />
+<ImageView
+        android:id="@+id/image_toTOP"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="12dp"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/to_top" />
+
+</RelativeLayout>

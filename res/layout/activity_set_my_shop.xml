@@ -1,0 +1,292 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetMyShopActivity" >
+<RelativeLayout
+        android:id="@+id/RelativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/lanlv" 
+        >
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="我的店铺"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/dise_bai"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/btn_finish"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="12dp"
+            android:src="@drawable/fx_common_title_back_pressed" />
+    </RelativeLayout>
+
+<ScrollView
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/RelativeLayout2"
+    android:layout_centerHorizontal="true" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:background="@color/ziti_hui" >
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="店铺简称:"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edit_shop_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:layout_marginRight="12dp"
+                android:ems="10"
+                android:hint="尽量使用2-10个字"
+                android:singleLine="true"
+                android:textSize="18sp" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/cart_listview_gap" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="主营类别:"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_class1"
+                android:layout_width="66dp"
+                android:layout_height="30dp"
+                android:background="@drawable/rectangle_bai_heiquan"
+                android:text="选择大类"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_class2"
+                android:layout_width="66dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/rectangle_bai_heiquan"
+                android:text="选择小类"
+                android:textSize="12sp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/btn_class3"
+                android:layout_width="66dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/rectangle_bai_heiquan"
+                android:text="选择细节"
+                android:textSize="12sp"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/cart_listview_gap" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="所在地区:"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_adds1"
+                android:layout_width="72dp"
+                android:layout_height="30dp"
+                android:background="@drawable/rectangle_bai_heiquan"
+                android:text="--全部省--"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_adds2"
+                android:layout_width="72dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/rectangle_bai_heiquan"
+                android:text="--全部市--"
+                android:textSize="12sp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/btn_adds3"
+                android:layout_width="72dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/rectangle_bai_heiquan"
+                android:text="--全部区县--"
+                android:textSize="12sp"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/cart_listview_gap" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="联系电话:"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/Edit_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:layout_marginRight="12dp"
+                android:ems="10"
+                android:hint="手机号码"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/cart_listview_gap" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="联系姓名:"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:layout_marginRight="12dp"
+                android:ems="10"
+                android:hint="联系人"
+                android:singleLine="true"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/cart_listview_gap" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="店面地址:"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/Edit_adds"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:layout_marginRight="12dp"
+                android:ems="10"
+                android:hint="详细地址"
+                android:singleLine="true"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/cart_listview_gap" />
+		 <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:background="@color/ziti_hui" >
+        </RelativeLayout>
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/item_set_my_shop_weiba" />
+
+    </LinearLayout>
+
+</ScrollView>
+
+</RelativeLayout>

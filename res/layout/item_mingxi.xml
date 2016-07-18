@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dise_bai" >
+
+        <TextView
+            android:id="@+id/tv_leixing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收益"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_shijian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_leixing"
+            android:text="收益"
+            android:textColor="@color/youdianhui"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tmp6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="元"
+            android:textColor="@color/youdianhui"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_jiner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:layout_toLeftOf="@id/tmp6"
+            android:text="0.0"
+            android:textColor="@color/zhusediao_lan"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+</LinearLayout>

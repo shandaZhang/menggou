@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/dise_bai"
+                android:orientation="vertical" >
+
+    <include
+            android:id="@+id/actionbarLay"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentTop="true"
+            layout="@layout/actionbar_default" />
+
+    <ScrollView
+            android:layout_below="@id/actionbarLay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0dip"
+                    android:gravity="center_vertical" >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_weight="1.0"
+                        android:text="帐号"
+                        android:textColor="#ff555555" />
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.0"
+                        android:gravity="right" >
+
+                    <EditText
+                            android:id="@+id/et_text1"
+                            android:enabled="false"
+                            android:layout_width="@dimen/jiesuan_kuan"
+                            android:layout_height="42.0dip"
+                            android:layout_marginRight="23.0dip"
+                            android:background="@drawable/edit_press"
+                            android:singleLine="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0dip"
+                    android:gravity="center_vertical" >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_weight="1.0"
+                        android:text="姓名"
+                        android:textColor="#ff555555" />
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.0"
+                        android:gravity="right" >
+
+                    <EditText
+                            android:id="@+id/et_text2"
+                            android:layout_width="@dimen/jiesuan_kuan"
+                            android:layout_height="42.0dip"
+                            android:layout_marginRight="23.0dip"
+                            android:background="@drawable/edit_press"
+                            android:singleLine="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0dip"
+                    android:gravity="center_vertical" >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_weight="1.0"
+                        android:text="身份证"
+                        android:textColor="#ff555555" />
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.0"
+                        android:gravity="right" >
+
+                    <EditText
+                            android:id="@+id/et_text3"
+                            android:layout_width="@dimen/jiesuan_kuan"
+                            android:layout_height="42.0dip"
+                            android:layout_marginRight="23.0dip"
+                            android:background="@drawable/edit_press"
+                            android:singleLine="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0dip"
+                    android:gravity="center_vertical" >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_weight="1.0"
+                        android:text="邮箱"
+                        android:textColor="#ff555555" />
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.0"
+                        android:gravity="right" >
+
+                    <EditText
+                            android:id="@+id/et_text4"
+                            android:layout_width="@dimen/jiesuan_kuan"
+                            android:layout_height="42.0dip"
+                            android:layout_marginRight="23.0dip"
+                            android:background="@drawable/edit_press"
+                            android:singleLine="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0dip"
+                    android:gravity="center_vertical" >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_weight="1.0"
+                        android:text="支付密码"
+                        android:textColor="#ff555555" />
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.0"
+                        android:gravity="right" >
+
+                    <EditText
+                            android:id="@+id/et_text5"
+                            android:layout_width="@dimen/jiesuan_kuan"
+                            android:layout_height="42.0dip"
+                            android:layout_marginRight="23.0dip"
+                            android:background="@drawable/edit_press"
+                            android:password="true"
+                            android:singleLine="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0dip"
+                    android:gravity="center_vertical" >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_weight="1.0"
+                        android:text="省"
+                        android:textColor="#ff555555" />
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.0"
+                        android:gravity="right" >
+
+                    <Spinner
+                            android:id="@+id/sp_1"
+                            android:layout_width="@dimen/jiesuan_kuan"
+                            android:layout_height="42.0dip"
+                            android:layout_marginRight="23.0dip" />
+
+                    <!--<EditText-->
+                            <!--android:id="@+id/et_text6"-->
+                            <!--android:layout_width="@dimen/jiesuan_kuan"-->
+                            <!--android:layout_height="42.0dip"-->
+                            <!--android:layout_marginRight="23.0dip"-->
+                            <!--android:background="@drawable/edit_press"-->
+                            <!--android:singleLine="true" />-->
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0dip"
+                    android:gravity="center_vertical" >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_weight="1.0"
+                        android:text="市"
+                        android:textColor="#ff555555" />
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.0"
+                        android:gravity="right" >
+                    <Spinner
+                            android:id="@+id/sp_2"
+                            android:layout_width="@dimen/jiesuan_kuan"
+                            android:layout_height="42.0dip"
+                            android:layout_marginRight="23.0dip" />
+                    <!--<EditText-->
+                            <!--android:id="@+id/et_text7"-->
+                            <!--android:layout_width="@dimen/jiesuan_kuan"-->
+                            <!--android:layout_height="42.0dip"-->
+                            <!--android:layout_marginRight="23.0dip"-->
+                            <!--android:background="@drawable/edit_press"-->
+                            <!--android:singleLine="true" />-->
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5.0dip"
+                    android:gravity="center_vertical" >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16.0dip"
+                        android:layout_weight="1.0"
+                        android:text="县"
+                        android:textColor="#ff555555" />
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.0"
+                        android:gravity="right" >
+                    <Spinner
+                            android:id="@+id/sp_3"
+                            android:layout_width="@dimen/jiesuan_kuan"
+                            android:layout_height="42.0dip"
+                            android:layout_marginRight="23.0dip" />
+                    <!--<EditText-->
+                            <!--android:id="@+id/et_text8"-->
+                            <!--android:layout_width="@dimen/jiesuan_kuan"-->
+                            <!--android:layout_height="42.0dip"-->
+                            <!--android:layout_marginRight="23.0dip"-->
+                            <!--android:background="@drawable/edit_press"-->
+                            <!--android:singleLine="true" />-->
+                </RelativeLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_sure"
+                android:layout_margin="35dp"
+                android:text="确定"
+                android:textColor="@color/dise_bai"
+                android:background="@color/lanlv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

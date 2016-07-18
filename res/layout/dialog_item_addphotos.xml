@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/dialog_addphotos_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/dialog_addphotos_btn_look"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/rectangle_lanlv"
+            android:text="拍照"
+            android:textColor="@color/dise_bai"
+            android:visibility="gone"
+            android:textSize="15sp" />
+        <Button
+            android:id="@+id/dialog_addphotos_btn_cammer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/rectangle_lanlv"
+            android:text="拍照"
+            android:textColor="@color/dise_bai"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/dialog_addphotos_btn_photo"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/rectangle_red"
+            android:text="从相册导入"
+            android:textColor="@color/dise_bai"
+            android:textSize="15sp" />
+
+        
+
+        <Button
+        	android:id="@+id/dialog_addphotos_btn_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/rectangle_bai"
+            android:textSize="15sp"
+            android:textColor="@color/ziti_hui"
+            android:text="取消" />
+
+    </LinearLayout>
+
+</LinearLayout>

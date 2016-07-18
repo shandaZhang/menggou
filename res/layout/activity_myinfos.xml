@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/dise_bai"
+                android:orientation="vertical" >
+
+    <include
+            android:id="@+id/actionbarLay"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentTop="true"
+            layout="@layout/actionbar_default" />
+
+    <ScrollView
+            android:layout_below="@id/actionbarLay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/tv_text0"
+                    android:layout_width="match_parent"
+                    android:layout_height="42.0dip"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:layout_marginRight="23.0dip"
+                    android:text="我的资料"
+                    android:gravity="center"
+                    android:background="@drawable/edit_press"
+                    android:drawableRight="@drawable/right" />
+
+            <TextView
+                    android:id="@+id/tv_text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="42.0dip"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginTop="25.0dip"
+                    android:layout_marginRight="23.0dip"
+                    android:text="我的银行卡"
+                    android:gravity="center"
+                    android:background="@drawable/edit_press"
+                    android:drawableRight="@drawable/right" />
+
+            <TextView
+                    android:id="@+id/tv_text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="42.0dip"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginTop="25.0dip"
+                    android:layout_marginRight="23.0dip"
+                    android:text="证照验证"
+                    android:gravity="center"
+                    android:background="@drawable/edit_press"
+                    android:drawableRight="@drawable/right" />
+
+            <TextView
+                android:textColor="@color/lanlv"
+                    android:layout_width="match_parent"
+                    android:layout_height="42.0dip"
+                    android:layout_marginLeft="16.0dip"
+                    android:layout_marginTop="25.0dip"
+                    android:layout_marginRight="23.0dip"
+                    android:text="以上三项所有资料正确上传后方可审核开通"
+                    android:gravity="center" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

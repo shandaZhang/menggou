@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <color android:id="@+id/color1" name="youdianhui" android:layout_width="wrap_content" android:layout_height="wrap_content">#FF839da9</color>
+    <color android:id="@+id/color2" name="zhusediao_lan" android:layout_width="wrap_content" android:layout_height="wrap_content">#FF5287b1</color>
+    <color android:id="@+id/color3" name="dise_bai" android:layout_width="wrap_content" android:layout_height="wrap_content">#FFffffff</color>
+    <color android:id="@+id/color4" name="ziti_hui" android:layout_width="wrap_content" android:layout_height="wrap_content">#FFa6a6a6</color>
+    <color  name="hui_gray" >#bebebe</color>
+    <color android:id="@+id/color5" name="ziti_hong" android:layout_width="wrap_content" android:layout_height="wrap_content">#FFfa1111</color>
+    <color android:id="@+id/color6" name="youdianhui2" android:layout_width="wrap_content" android:layout_height="wrap_content">#99839da9</color>
+    <color android:id="@+id/color7" name="youdianhui3" android:layout_width="wrap_content" android:layout_height="wrap_content">#dfe9eb</color>
+
+    <string name="menggouhuanyni">盟购欢迎您</string>
+    <string name="forgotpassword">忘记密码</string>
+    <string name="pleaseinputusername">请输入用户名</string>
+    <string name="pleaseinputpassword">请输入密码</string>
+    <string name="login">登陆</string>
+    <string name="register">注册</string>
+    <string name="search_server">搜索服务</string>
+    <string name="mall">商城</string>
+    <string name="my_shop">我的店铺</string>
+    <string name="around_service">周边服务</string>
+    <string name="pleaseinputmoney">请输入金额</string>
+    <string name="recharge">充值</string>
+    <string name="withdraw">提现</string>
+    <string name="ok">确定</string>
+    <string name="account_user">开户名</string>
+    <string name="phone">手机号</string>
+    <string name="bank_card_no">银行卡号</string>
+    <string name="bank_name">开户行</string>
+    <string name="edit">编辑</string>
+    <string name="logintel">服务电话：4000369079</string>
+
+    <style name="popupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_from_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_to_bottom_out</item>
+    </style>
+
+    <color name="bluelighter">#FF16c8dc</color>
+
+</resources>

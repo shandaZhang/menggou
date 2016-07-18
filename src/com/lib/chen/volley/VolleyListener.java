@@ -1,0 +1,9 @@
+package com.lib.chen.volley;
+
+import com.android.volley.Response;
+
+public interface VolleyListener extends 
+Response.Listener<String>, Response.ErrorListener
+{
+
+}

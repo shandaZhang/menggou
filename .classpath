@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/android-support-v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/BaiduLBS_Android.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/DtoolsWithInject.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/gson-2.2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/httpmime-4.1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/lib_nineold.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/lib_uil.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/lib_volley.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_laiwang_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_laiwang_2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_QQZone_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_QQZone_2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_QQZone_3.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_renren_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_renren_2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_Sina.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_sms.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_tencentWB_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_tencentWB_2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_tencentWB_3.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_WeiXin_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_WeiXin_2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_yixin_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/SocialSDK_yixin_2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/umeng_social_sdk.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/UPPayAssistEx.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/UPPayPluginExPro.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/Newmenggounew_Zero/menggounew_Zero/menggounew_Zero/libs/ViewPagerIndicator.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

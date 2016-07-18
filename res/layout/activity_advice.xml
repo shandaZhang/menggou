@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include
+            layout="@layout/actionbar_default"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp">
+        <EditText
+                android:id="@+id/et_advice_content"
+                android:textSize="21sp"
+                android:hint="您的问题或意见"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="4"
+                android:gravity="left|top"/>
+        <EditText
+                android:id="@+id/et_advice_contact"
+                android:textSize="20sp"
+                android:hint="请输入QQ号或者手机号方便联系您"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <Button
+                android:id="@+id/btn_submit"
+                android:textSize="22sp"
+                android:text="提交"
+                android:background="@color/lanlv"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

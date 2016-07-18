@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/actionbar_default"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/lanlv" >
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:maxLength="8"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/dise_bai"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@drawable/left"
+        android:text="    "
+        android:textColor="@color/zhusediao_lan"
+        android:textSize="20sp" />
+    
+    <ImageView
+        android:id="@+id/iv_actionbar_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/add02"
+        android:visibility="gone" />
+    <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:visibility="gone"
+            android:text=" 返回 "
+            android:textColor="@color/dise_bai"
+            android:textSize="20sp" />
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/zhusediao_lan"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

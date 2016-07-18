@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/actionbarLay"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        layout="@layout/actionbar_default" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:padding="10dp"
+        android:layout_below="@id/actionbarLay"
+        android:orientation="vertical">
+
+        <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:drawableLeft="@drawable/denglutubiao1"
+                android:hint="请输入手机号"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:drawableLeft="@drawable/denglutubiao2"
+            android:hint="@string/pleaseinputpassword"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textSize="20sp" />
+
+        <EditText
+                android:id="@+id/et_salt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:drawableLeft="@drawable/denglutubiao1"
+                android:hint="请输入邀请人手机号（必填）"
+                android:singleLine="true"
+                android:textSize="20sp" />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal" >
+
+                <EditText
+                        android:id="@+id/et12"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="6位短信验证码"
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:textSize="18sp" />
+
+            <Button
+                    android:id="@+id/btn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cs_bg7"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="获取验证码"
+                    android:textColor="@color/dise_bai"
+                    android:textSize="18sp" />
+        </LinearLayout>
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkbox_agree" 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.Holo.CompoundButton.CheckBox"/>
+            <TextView 
+                android:id="@+id/text_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我已阅读并同意《用户协议》"
+                android:textSize="12sp"
+                android:textStyle="italic"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@color/lanlv"
+            android:text="@string/register"
+            android:textColor="@color/dise_bai"
+            android:textSize="21sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_isbg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dise_bai"
+        android:visibility="gone" >
+
+        <ImageSwitcher
+            android:id="@+id/is_add"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</RelativeLayout>

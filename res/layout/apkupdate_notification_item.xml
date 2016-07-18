@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:gravity="center_vertical">
+    
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_launcher"
+	        android:layout_gravity="center_vertical"/>
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:padding="5dp">
+	        <TextView 
+	            android:id="@+id/notificationTitle"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="XXX.apk 正在下载"
+	            android:textSize="18sp"
+	            android:textColor="@android:color/white"
+	            android:textStyle="bold"/>
+	        <RelativeLayout 
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal">	         
+		        <ProgressBar 
+		            android:id="@+id/notificationProgress"
+		            style="?android:attr/progressBarStyleHorizontal"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:max="100"
+		            android:progress="0"
+		            android:layout_toLeftOf="@+id/notificationPercent"
+		            android:layout_toStartOf="@+id/notificationPercent"
+		            android:layout_alignBottom="@+id/notificationPercent"/>
+		        <TextView 
+		            android:id="@+id/notificationPercent"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="0%"
+		            android:textSize="16sp"
+		            android:textColor="@android:color/white"
+		            android:layout_alignParentRight="true"
+		            android:layout_alignParentEnd="true"
+		            android:paddingLeft="10dp"/>
+	        </RelativeLayout>
+	    </LinearLayout>
+	</LinearLayout>
+</LinearLayout>

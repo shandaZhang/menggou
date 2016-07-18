@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/translucent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp0"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="visible">
+	
+        <EditText
+            android:id="@+id/et_how_much"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:background="@color/dise_bai"
+            android:hint="@string/pleaseinputmoney"
+            android:inputType="numberDecimal"
+            android:maxLength="8"
+            android:padding="5dp"
+            android:textSize="19sp"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
+        
+    </LinearLayout>
+
+    <com.fujianmenggou.fm.KeyboardNumber
+        android:id="@+id/key_board_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+</LinearLayout>

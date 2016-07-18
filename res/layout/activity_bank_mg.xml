@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/dise_bai"
+              android:layout_height="match_parent">
+    <include
+            android:id="@+id/actionbarLay"
+            layout="@layout/actionbar_default"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"/>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_horizontal_margin" >
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/cs_bg4"
+                    android:orientation="vertical"
+                    android:paddingLeft="33dp" >
+
+                <EditText
+                        android:id="@+id/et1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入开户姓名"
+                        android:inputType="textEmailAddress|textEmailSubject"
+                        android:singleLine="true"
+                        android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/cs_bg3"
+                    android:orientation="vertical"
+                    android:paddingLeft="33dp" >
+
+                <EditText
+                        android:id="@+id/et2"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入银行卡号"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textSize="18sp" />
+
+                <Spinner
+                        android:id="@+id/sp1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:textSize="18sp" />
+
+                <EditText
+                        android:id="@+id/et3"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入开户行"
+                        android:singleLine="true"
+                        android:textSize="18sp" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_sure"
+                android:layout_margin="35dp"
+                android:text="确定"
+                android:textColor="@color/dise_bai"
+                android:background="@color/lanlv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

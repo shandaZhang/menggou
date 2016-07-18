@@ -1,0 +1,186 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fujianmenggou.AddGoodsActivity$PlaceholderFragment" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/lanlv" 
+        >
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="添加商品"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/dise_bai"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/btn_finish"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="9dp"
+            android:src="@drawable/fx_common_title_back_pressed" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/RelativeLayout2"
+        android:layout_centerHorizontal="true" 
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@color/ziti_hui" >
+    </RelativeLayout>
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/white_corners_bg"
+                android:ems="10"
+                android:padding="3dp"
+                android:hint="请输入商品名称"
+                android:singleLine="true"
+                android:textSize="20sp" >
+
+            </EditText>
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@color/ziti_hui" >
+    </RelativeLayout>
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/add_goods_item0" 
+                android:visibility="gone"/>
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/add_goods_item9" 
+                android:visibility="gone"/>
+	<com.fujianmenggou.ckw.HorizontalListView
+            android:id="@+id/horizontalListView"
+            android:layout_width="match_parent"
+            android:layout_height="120dp" 
+            android:visibility="gone"/>
+	<GridView
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="6dp"
+                android:maxLines="1"
+                android:text="商品封面(至少1张，最多5张)"
+                android:textColor="@color/ziti_hui"
+                android:textSize="12sp" />
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/add_goods_item2" />
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/add_goods_item3" />
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/add_goods_item4" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+            android:id="@+id/layout_down"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/dise_bai"
+        android:padding="3dp"
+         >
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_hui"
+            android:text="仅保存至商品库"
+            android:textColor="@color/dise_bai" />
+
+        <Button
+            android:id="@+id/btn_putaway"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_lanlv"
+            android:text="直接上架"
+            android:textColor="@color/dise_bai" />
+    </LinearLayout>
+
+    <include
+            android:id="@+id/View_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/add_goods_item_menu1"
+        android:visibility="invisible"
+         />
+
+    <RelativeLayout
+            android:id="@+id/View_menu_null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/View_menu"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#AAA6A6A6"
+        android:visibility="invisible" >
+
+    </RelativeLayout>
+
+</RelativeLayout>

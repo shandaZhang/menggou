@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/youdianhui2"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_tmp1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/youdianhui2" >
+
+        <ImageView
+            android:id="@+id/iv_yinhangkaicon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/yhkicon" />
+
+        <EditText
+            android:id="@+id/et_kahao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_yinhangkaicon"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/iv_yinhangkaicon"
+            android:background="@null"
+            android:textColor="@color/dise_bai"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/et_kaihuren"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_kahao"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/iv_yinhangkaicon"
+            android:background="@null"
+            android:textColor="@color/dise_bai"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/et_kaihuhang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_kaihuren"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/iv_yinhangkaicon"
+            android:background="@null"
+            android:textColor="@color/dise_bai"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_gaiyinhangka"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/rl_tmp1"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/genggaiyinhangka"
+        android:text="更换银行卡"
+        android:textColor="@color/dise_bai" />
+
+</LinearLayout>

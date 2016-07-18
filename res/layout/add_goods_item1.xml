@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@color/ziti_hui" >
+    </RelativeLayout>
+
+    <EditText
+           android:id="@+id/editText2"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:inputType="textMultiLine"
+           android:background="@null"
+           android:hint="请输入商品描述，写写特点吧...（选填）"
+           android:gravity="left|top"
+           android:maxLines="10" 
+           android:textSize="18sp"
+           android:minLines="10"/>
+
+</LinearLayout>

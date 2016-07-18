@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fujianmenggou"
+    android:versionCode="5"
+    android:versionName="1.0.4" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- ###################声明SDK使用的相关权限###################### -->
+    <!-- 检测网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 获取mac地址作为用户的备用唯一标识 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取用户手机的IMEI，用来唯一的标识用户 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 缓存资源优先存入SDcard -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 允许应用程序联网，以便向我们的服务器端发送数据 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 银联支付相关 -->
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature android:name="android.hardware.nfc.hce" />
+
+    <!-- 百度地图中需要的一些原先没有的权限 -->
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <application
+        android:name="com.fujianmenggou.ckw.MyApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- 百度地图 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="eRyKPxsEH49SBPNoZH09lwDNcguI8woQ" />
+
+        <!-- 银联支付相关 -->
+        <uses-library
+            android:name="org.simalliance.openmobileapi"
+            android:required="false" />
+        <!-- ###################添加UmengAppkey###################### -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5459ea95fd98c550b0004df3" >
+        </meta-data>
+
+        <service
+            android:name="com.fujianmenggou.service.APPUpdateService"
+            android:process=":remote" />
+        <!-- ###################注册SDK使用的Activity###################### -->
+        <!-- 分享编辑页 -->
+        <activity
+            android:name="com.umeng.socialize.view.ShareActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/Theme.UMDialog"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+
+        <!-- ############ QQ空间和QQ SSO授权的Activity注册 ############ -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID -->
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 以上为友盟所需配置 -->
+
+        <activity
+            android:name="com.fujianmenggou.LoginActivity"
+            android:configChanges="orientation|screenSize|layoutDirection"
+            android:label="@string/app_name" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.MainActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.WeiDian"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.KaiTongXiaJi1"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.KaiTongXiaJi2"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.KaiTongXiaJi3"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.KaiTongXiaJi4"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.XiaJiGuanLi"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.FenRunJiLu"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.AdviceActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.TiXian"
+            android:configChanges="orientation|screenSize|layoutDirection"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.JiaoYiMingXi"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.LoadingActivity"
+            android:theme="@style/LoaddingStyle" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.AgreementActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.BianMinActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.BuyLevelActivity"
+            android:configChanges="orientation|screenSize|layoutDirection"
+            android:theme="@style/tabTheme" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.MyIncomeActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.UserCenter"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.Register1"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.AddProductActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.ProductDetail"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.JiesuanActicity"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.ModifyShopInfoActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity android:name="com.fujianmenggou.atv.WebActivity" >
+        </activity>
+        <activity android:name="com.fujianmenggou.atv.GongYingShang" >
+        </activity>
+        <activity android:name="com.fujianmenggou.atv.XinZengWS" >
+        </activity>
+        <activity android:name="com.fujianmenggou.atv.ForgetPassword" >
+        </activity>
+        <activity android:name="com.fujianmenggou.atv.RechargeActivity" >
+        </activity>
+        <activity android:name="com.fujianmenggou.atv.AirPay" >
+        </activity>
+        <activity android:name="com.fujianmenggou.atv.RenZheng" >
+        </activity>
+        <activity android:name="com.fujianmenggou.atv.BankManage" />
+        <activity android:name="com.fujianmenggou.atv.Zhengjian" />
+        <activity android:name="com.fujianmenggou.atv.PayChanelActivity" />
+        <activity android:name="com.fujianmenggou.atv.Guide4AddBusiness" />
+        <activity android:name="com.fujianmenggou.atv.TradeActivity" />
+        <activity android:name="com.fujianmenggou.atv.About" />
+        <activity
+            android:name="com.fujianmenggou.atv.MobilePayActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.fujianmenggou.atv.ResetPassword" />
+        <activity android:name="com.fujianmenggou.PhontMenuActivity" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.ckw.DetailsActivity"
+            android:configChanges="orientation|screenSize|layoutDirection" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.ckw.GuideActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.ckw.WebViewCkwActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.ckw.AddGoodsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.ckw.SetMyShopActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_set_my_shop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.ckw.MineMessageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_mine_message"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.ckw.ShopActivity"
+            android:configChanges="orientation|screenSize|layoutDirection"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.ckw.SplashActivity"
+            android:configChanges="orientation|screenSize|layoutDirection"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".atv.MyInfos" />
+
+        <!-- 银联支付相关 -->
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.unionpay.UPPayWapActivity"
+            android:configChanges="orientation|keyboardHidden|fontScale"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+
+        <!-- 自定义键盘 -->
+        <activity
+            android:name="com.fujianmenggou.fm.PinInputOffLineDialog"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.fujianmenggou.atv.OrderManageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/tabThemeGreen" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.ShopInfoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.BarrowActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.ShopPreViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.GoodsDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.GoodsAssesmentActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.SubmitOrderActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.AddressActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.fujianmenggou.atv.MyGoodsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+
+    <LinearLayout
+        android:id="@+id/aaa"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_margin="6dp"
+            android:id="@+id/aaa1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ring_make_add_unable" />
+
+        <ImageView
+            android:layout_margin="6dp"
+            android:id="@+id/aaa2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ring_make_add_unable"
+            android:visibility="invisible"  />
+
+        <ImageView
+            android:layout_margin="6dp"
+            android:id="@+id/aaa3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ring_make_add_unable"
+            android:visibility="invisible"  />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bbb"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/aaa"
+        android:orientation="horizontal" 
+            android:visibility="gone" >
+
+        <ImageView
+            android:layout_margin="6dp"
+            android:id="@+id/bbb1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ring_make_add_unable"
+            android:visibility="invisible"  />
+
+        <ImageView
+            android:layout_margin="6dp"
+            android:id="@+id/bbb2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ring_make_add_unable" 
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_margin="6dp"
+            android:id="@+id/bbb3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ring_make_add_unable"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</RelativeLayout>

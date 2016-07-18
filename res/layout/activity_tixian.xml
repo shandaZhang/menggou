@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/dise_bai"
+              android:orientation="vertical" >
+
+    <include
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            layout="@layout/actionbar_default" />
+
+    <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="19dp" >
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="237px"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/tixiandaoka"
+                    android:orientation="vertical" >
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="31"
+                        android:orientation="horizontal" >
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="249"
+                            android:gravity="center"
+                            android:text="账户余额"
+                            android:textSize="22sp" />
+
+                    <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="74" />
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="259"
+                            android:gravity="center"
+                            android:text="银行账户"
+                            android:textSize="22sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:padding="10dp"
+                        android:layout_weight="48"
+                        android:orientation="vertical" >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="您的账户可用余额：" />
+
+                        <TextView
+                                android:id="@+id/tv_yu_e"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="0.0"
+                                android:textColor="@color/zhusediao_lan" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="元" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="转出到：" />
+
+                        <TextView
+                                android:id="@+id/tv_bankname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="中国银行" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="(" />
+
+                        <TextView
+                                android:id="@+id/tv_bankcode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="*9999" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text=")" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/et_bg">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="提现方式"
+                    android:textSize="18sp"
+                    android:textColor="@color/hui_gray"
+                    android:paddingLeft="8dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_pay_type"
+                    android:textSize="18sp"
+                    android:textColor="@color/hui_gray"
+                    android:paddingRight="8dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                    android:id="@+id/et_zhuanchujine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/et_bg"
+                    android:gravity="center_vertical|left"
+                    android:hint="请输入要转出的金额"
+                    android:inputType="numberDecimal"
+                    android:maxLength="8"
+                    android:paddingLeft="8dp"
+                    android:textSize="19sp" />
+
+            <EditText
+                    android:id="@+id/et_zhifumima"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/et_bg"
+                    android:gravity="center_vertical|left"
+                    android:hint="请输入6位支付密码"
+                    android:inputType="textPassword"
+                    android:paddingLeft="8dp"
+                    android:textSize="19sp" />
+
+            <Button
+                    android:id="@+id/btn_zhuanchu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button1"
+                    android:gravity="center"
+                    android:text="确认转出"
+                    android:textColor="@color/dise_bai"
+                    android:textSize="19sp" />
+
+            <TextView
+                    android:id="@+id/tv_notice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/zhusediao_lan" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/dise_bai"
+              android:orientation="vertical" >
+
+    <include
+            android:id="@+id/actionbarLay"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            layout="@layout/actionbar_default" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:orientation="vertical"
+            android:background="@color/ziti_hui"
+            android:padding="1px">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="@color/dise_bai"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="订单号："
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="123456"
+                    android:id="@+id/tv_order_no"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="@color/dise_bai"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="消费类型："
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="网购"
+                    android:id="@+id/tv_expen_type"
+                    android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/dise_bai"
+                android:padding="10dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="交易金额："
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="500"
+                    android:id="@+id/tv_moneys"
+                    android:textColor="@color/black"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:orientation="vertical"
+            android:background="@color/ziti_hui"
+            android:padding="1px">
+        <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@color/dise_bai"
+                android:hint="输入付款手机号"
+                android:textSize="20sp" />
+    </LinearLayout>
+    <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:background="@color/lanlv"
+            android:text="创建并发送收款链接"
+            android:textColor="@color/dise_bai"
+            android:textSize="20sp" />
+
+</LinearLayout>

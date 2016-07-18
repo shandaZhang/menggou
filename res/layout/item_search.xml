@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@color/dise_bai">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="抱歉\n暂时没找到相关商品\n请搜索其他关键字\n或点击查看全部商品"
+        android:textColor="@color/lanlv"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    
+</RelativeLayout>
