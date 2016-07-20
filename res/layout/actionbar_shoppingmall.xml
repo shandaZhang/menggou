@@ -21,7 +21,9 @@
         android:layout_weight="1"
         android:background="@drawable/bg_et_white"
         android:hint="搜索您喜欢的产品"
-        android:padding="5dp" />
+        android:imeOptions="actionSearch"
+        android:padding="5dp"
+        android:singleLine="true" />
 
     <ImageView
         android:id="@+id/iv_barrow"

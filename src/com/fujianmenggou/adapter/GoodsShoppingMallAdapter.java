@@ -2,6 +2,8 @@ package com.fujianmenggou.adapter;
 
 import java.util.ArrayList;
 
+import javax.crypto.spec.IvParameterSpec;
+
 import com.baidu.mapapi.common.Logger;
 import com.fujianmenggou.R;
 import com.fujianmenggou.atv.GoodsDetailActivity;
@@ -112,6 +114,10 @@ public class GoodsShoppingMallAdapter extends BaseAdapter implements
 			if (goods2.getUrl() == null) {
 				holder.ivGoods2.setImageResource(R.drawable.goods2);
 			}
+		} else {
+			holder.tvPrice2.setText("");
+			holder.tvTitle2.setText("");
+			holder.ivGoods2.setImageDrawable(null);
 		}
 
 		return convertView;
