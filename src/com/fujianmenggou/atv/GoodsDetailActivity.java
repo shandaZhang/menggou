@@ -3,6 +3,10 @@ package com.fujianmenggou.atv;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -16,26 +20,37 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 
 import com.fujianmenggou.R;
+import com.fujianmenggou.bean.GoodsAssesment;
 import com.fujianmenggou.bean.GoodsDetail;
+import com.fujianmenggou.bean.GoodsList;
 import com.fujianmenggou.util.BaseActivity;
+import com.fujianmenggou.util.GlobalVars;
+import com.fujianmenggou.util.Tools;
+
+import dujc.dtools.afinal.http.AjaxCallBack;
+import dujc.dtools.afinal.http.AjaxParams;
+import dujc.dtools.xutils.bitmap.BitmapDisplayConfig;
+import dujc.dtools.xutils.util.LogUtils;
 
 public class GoodsDetailActivity extends BaseActivity {
 
 	private ViewPager viewPager;
-	private ArrayList<String> ivPagerUrls = new ArrayList<String>();
 	private ArrayList<ImageView> viewContainter = new ArrayList<ImageView>();
 	private LinearLayout layoutDots;
 	private ImageView ivDots;
 	private LinearLayout layoutGoodsAttr;
-	private TextView tvGoodsName, tvPriceNow, tvPriceMarket, tvRemainingTime,
-			tvAssesment;
+	private TextView tvGoodsName, tvPriceNow, tvPriceMarket, tvAssesment;
 	private TextView tvAdd, tvSubStract, tvNum;
 	private Button btnBuy, btnBarrow;
 	private int number = 1;
+	private BitmapDisplayConfig displayConfig;
+	private ArrayList<String> assetsments = new ArrayList<String>();
+	private ListView assessList;	//评价列表
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +69,6 @@ public class GoodsDetailActivity extends BaseActivity {
 		tvGoodsName = (TextView) findViewById(R.id.tv_goods_title);
 		tvPriceNow = (TextView) findViewById(R.id.tv_price_now);
 		tvPriceMarket = (TextView) findViewById(R.id.tv_price_market);
-		tvRemainingTime = (TextView) findViewById(R.id.tv_remaining_time);
 		tvAdd = (TextView) findViewById(R.id.tv_add);
 		tvNum = (TextView) findViewById(R.id.tv_number);
 		tvSubStract = (TextView) findViewById(R.id.tv_subtract);
@@ -209,6 +223,139 @@ public class GoodsDetailActivity extends BaseActivity {
 			layoutGoodsAttr.addView(attr);
 
 		}
+	}
+
+	private void getGoodsDetail() {
+		// http://103.27.7.116:83/json/json.aspx?op=GoodsDetails&id=1
+
+		Tools.ShowLoadingActivity(context);
+		AjaxParams params = new AjaxParams();
+		params.put("op", "GoodsDetails");
+		params.put("id", getIntent().getStringExtra("id"));
+
+		http.get(GlobalVars.url, params, new AjaxCallBack<String>() {
+			@Override
+			public void onFailure(Throwable t, int errorNo, String strMsg) {
+				super.onFailure(t, errorNo, strMsg);
+				Tools.DismissLoadingActivity(context);
+			}
+
+			@Override
+			public void onSuccess(String t) {
+				super.onSuccess(t);
+				Tools.DismissLoadingActivity(context);
+
+				LogUtils.i(t);
+
+				// {"result":"1","totalcount":1,"list":[{"id":1,"name":"香蕉","content":"艰苦艰苦拉萨东风科技"
+				// ,"pic":"/upload/201606/01/201606011104401384.jpg","price":1.00
+				// ,"describe":"展示商品时，商品的描述信息是必不可少的，是对图片信息的重要补充。大家都知道"
+				// + "，图片传达给顾客的只是商品的形状、颜色、大小等信息，而关于商品的具体性能、"
+				// + "具体尺寸、所用材料、原产地、售后服务保证等，就一定得通过文字作具体说明，"
+				// + "这样顾客才能够清楚商品的功能，从而决定是否购买",
+				// "oldprice":2.00,"stock":9985,"number":51,"address":"河北省秦皇岛市"
+				// ,"user_id":98,"add_time":"2016-05-01T00:17:50","sort_id":99
+				// ,"ls":[{"id":19,"user_id":98,"article_id":1
+				// ,"thumb_path":"/upload/201606/01/thumb_201606011104487859.jpg"
+				// ,"original_path":"/upload/201606/01/201606011104487859.jpg"
+				// ,"remark":null,"add_time":"2016-07-21T10:45:26.25725+08:00"}
+				// ,{"id":20,"user_id":98,"article_id":1,
+				// "thumb_path":"/upload/201606/01/thumb_201606011104489216.jpg"
+				// ,"original_path":"/upload/201606/01/201606011104489216.jpg"
+				// ,"remark":null,"add_time":"2016-07-21T10:45:26.25725+08:00"}
+				// ,{"id":21,"user_id":98,"article_id":1,"thumb_path":"/upload/201606/01/thumb_201606011104490320.jpg"
+				// ,"original_path":"/upload/201606/01/201606011104490320.jpg","remark":null
+				// ,"add_time":"2016-07-21T10:45:26.25725+08:00"},{"id":22,"user_id":98,"article_id":1
+				// ,"thumb_path":"/upload/201606/01/thumb_201606011104490896.jpg"
+				// ,"original_path":"/upload/201606/01/201606011104490896.jpg","remark":null
+				// ,"add_time":"2016-07-21T10:45:26.25725+08:00"}]}]}
+				try {
+					JSONObject obj = new JSONObject(t);
+					if (obj.getInt("result") == 1) {
+						// 店铺轮播图列表
+						// JSONArray shoplist = obj.getJSONArray("shoplist");
+						// for (int i = 0; i < shoplist.length(); i++) {
+						// JSONObject shopImg = shoplist.getJSONObject(i);
+						// ImageView iv = new ImageView(
+						// GoodsDetailActivity.this);
+						// iv.setScaleType(ScaleType.FIT_XY);
+						// viewContainter.add(iv);
+						// bmp.display(iv, shopImg.getString("thumb_path"),
+						// displayConfig);
+						// ImageView dot = new ImageView(
+						// GoodsDetailActivity.this);
+						// dot.setImageResource(R.drawable.icon_pot_unselected);
+						// layoutDots.addView(dot);
+						// }
+						// ivDots = (ImageView) layoutDots.getChildAt(0);
+						// ivDots.setImageResource(R.drawable.icon_pot_selected);
+
+						// 商品列表
+						JSONArray list = obj.getJSONArray("list");
+
+						for (int i = 0; i < list.length(); i++) {
+							JSONObject goodsObj = list.getJSONObject(i);
+							GoodsDetail detail = new GoodsDetail();
+							detail.setGoodsId(goodsObj.getString("id"));
+							detail.setPriceNow(goodsObj.getDouble("price"));
+							detail.setPriceMarket(goodsObj
+									.getDouble("oldprice"));
+							detail.setName(goodsObj.getString("name"));
+						}
+
+						viewPager.getAdapter().notifyDataSetChanged();
+
+					}
+
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
 	}
+
+	private void getAssesment() {
+		Tools.ShowLoadingActivity(context);
+		AjaxParams params = new AjaxParams();
+		params.put("op", "GoodsDetails");
+		params.put("id", getIntent().getStringExtra("id"));
+
+		http.get(GlobalVars.url, params, new AjaxCallBack<String>() {
+			@Override
+			public void onFailure(Throwable t, int errorNo, String strMsg) {
+				super.onFailure(t, errorNo, strMsg);
+				Tools.DismissLoadingActivity(context);
+			}
+
+			// {"result":"1","totalcount":2,"list":[
+			// {"id":2,"user_id":75,"goods_id":1,"score":78,"evaluate":"商品很漂亮","add_time":null,"is_lock":null},
+			// {"id":1,"user_id":98,"goods_id":1,"score":80,"evaluate":"商品很好","add_time":null,"is_lock":null}]}
+			@Override
+			public void onSuccess(String t) {
+				super.onSuccess(t);
+				Tools.DismissLoadingActivity(context);
+				LogUtils.i(t);
+				try {
+					JSONObject obj = new JSONObject(t);
+					if (obj.getInt("result") == 1) {
+						// 商品评价列表
+						JSONArray list = obj.getJSONArray("list");
+						for (int i = 0; i < list.length(); i++) {
+							JSONObject assess = list.getJSONObject(i);
+							assetsments.add(assess.getString("evaluate"));
+						}
+						//更新列表
+						
+
+					}
+
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
+	}
+
 }

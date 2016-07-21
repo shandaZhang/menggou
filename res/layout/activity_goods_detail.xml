@@ -71,14 +71,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="¥68.00" />
-
-            <TextView
-                android:id="@+id/tv_remaining_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="剩0天23:30:36"
-                android:textColor="@color/red" />
         </LinearLayout>
 
         <include layout="@layout/layout_dividor" />

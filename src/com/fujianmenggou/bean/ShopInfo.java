@@ -3,6 +3,8 @@ package com.fujianmenggou.bean;
 import java.util.ArrayList;
 
 public class ShopInfo {
+	private String shopId;
+
 	private String companyName;
 	private String type1;
 	private String type2;
@@ -138,6 +140,14 @@ public class ShopInfo {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getShopId() {
+		return shopId;
+	}
+
+	public void setShopId(String shopId) {
+		this.shopId = shopId;
 	}
 
 }

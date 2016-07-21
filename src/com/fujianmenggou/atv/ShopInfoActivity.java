@@ -2,6 +2,10 @@ package com.fujianmenggou.atv;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
@@ -21,15 +25,21 @@ import com.baidu.mapapi.model.LatLng;
 import com.fujianmenggou.R;
 import com.fujianmenggou.bean.ShopInfo;
 import com.fujianmenggou.util.BaseActivity;
+import com.fujianmenggou.util.GlobalVars;
+import com.fujianmenggou.util.Tools;
 
+import dujc.dtools.afinal.http.AjaxCallBack;
+import dujc.dtools.afinal.http.AjaxParams;
 import dujc.dtools.xutils.bitmap.BitmapCommonUtils;
 import dujc.dtools.xutils.bitmap.BitmapDisplayConfig;
+import dujc.dtools.xutils.util.LogUtils;
 
 public class ShopInfoActivity extends BaseActivity {
 
 	private MapView mMapView;
 	private BitmapDisplayConfig displayConfig;
 	private BaiduMap mBaiduMap;
+	private ShopInfo shopInfo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +58,7 @@ public class ShopInfoActivity extends BaseActivity {
 		animation.setDuration(500);
 		displayConfig.setAnimation(animation);
 		getShopInfo();
-		showShopInfo(initData());
+		// showShopInfo(initData());
 	}
 
 	private ShopInfo initData() {
@@ -118,10 +128,6 @@ public class ShopInfoActivity extends BaseActivity {
 		mBaiduMap.addOverlay(option);
 	}
 
-	private void getShopInfo() {
-
-	}
-
 	private void showShopInfo(ShopInfo info) {
 		((TextView) findViewById(R.id.tv_company_name)).setText(info
 				.getCompanyName());
@@ -165,6 +171,85 @@ public class ShopInfoActivity extends BaseActivity {
 			}
 		}
 		locateInMap(info.getLat(), info.getLng());
+
+	}
+
+	private void getShopInfo() {
+		Tools.ShowLoadingActivity(context);
+		// http://103.27.7.116:83/json/json.aspx?op=myShop&user_id=98
+		AjaxParams params = new AjaxParams();
+		params.put("op", "myShop");
+		params.put("user_id", userInfoPreferences.getString("uid", ""));
+		http.get(GlobalVars.url, params, new AjaxCallBack<String>() {
+
+			@Override
+			public void onFailure(Throwable t, int errorNo, String strMsg) {
+				super.onFailure(t, errorNo, strMsg);
+				Tools.DismissLoadingActivity(context);
+			}
+
+			@Override
+			public void onSuccess(String t) {
+				super.onSuccess(t);
+				Tools.DismissLoadingActivity(context);
+				LogUtils.i(t);
+				// {"result":"1","totalcount":1,"list":[
+				// {"id":1,"is_lock":0,"add_time":"2016-04-30T23:59:58",
+				// "title":"美美水果店","user_id":98,"sort_id":99,"sold_type":"水果",
+				// "provinceId":"福建省","cityId":"福州市","areaId":"台江区",
+				// "phone":"13906929659","name":"刘伟","address":"台江万达广场89号",
+				// "Lon":"119.34474","Lat":"26.05046","remark":null,
+				// "pic":"http://103.27.7.116:83/upload/201606/07/201606070043074121.png",
+				// "ls":[{"id":16,"user_id":98,"article_id":1,
+				// "thumb_path":"/upload/201606/07/thumb_201606070043204599.png",
+				// "original_path":"/upload/201606/07/201606070043204599.png",
+				// "remark":null,"add_time":"2016-07-21T14:12:46.9261953+08:00"},
+				// {"id":17,"user_id":98,"article_id":1,
+				// "thumb_path":"/upload/201606/07/thumb_201606070043235185.png",
+				// "original_path":"/upload/201606/07/201606070043235185.png",
+				// "remark":null,"add_time":"2016-07-21T14:12:46.9261953+08:00"}]}]}
+				// list 数据集
+				// list-pic 店铺图
+				// list-ls 展示图也等于店铺头部轮循图
+				try {
+					JSONObject obj = new JSONObject(t);
+					if (obj.getInt("result") == 1) {
+						JSONObject shopInfoObj = obj.getJSONArray("list")
+								.getJSONObject(0);
+						shopInfo = new ShopInfo();
+						shopInfo.setShopId(shopInfoObj.getString("id"));
+						shopInfo.setCompanyName(shopInfoObj.getString("title"));
+						shopInfo.setType1(shopInfoObj.getString("sold_type"));
+						shopInfo.setArea1(shopInfoObj.getString("provinceId"));
+						shopInfo.setArea1(shopInfoObj.getString("cityId"));
+						shopInfo.setArea1(shopInfoObj.getString("areaId"));
+						shopInfo.setPhone(shopInfoObj.getString("phone"));
+						shopInfo.setName(shopInfoObj.getString("name"));
+						shopInfo.setAddress(shopInfoObj.getString("address"));
+						locateInMap(shopInfoObj.getDouble("Lon"),
+								shopInfoObj.getDouble("Lat"));
+						ArrayList<String> shopIcons = new ArrayList<String>();
+						ArrayList<String> showIcons = new ArrayList<String>();
+						shopIcons.add(shopInfoObj.getString("pic"));
+						JSONArray ls = obj.getJSONArray("ls");
+						for (int i = 0; i < ls.length(); i++) {
+							JSONObject lsObj = ls.getJSONObject(i);
+							showIcons.add(GlobalVars.baseUrl
+									+ lsObj.getString("thumb_path"));
+						}
+						shopInfo.setShopIcon(shopIcons);
+						shopInfo.setShowIcon(showIcons);
+						showShopInfo(shopInfo);
+					} else {
+						Tools.showTextToast(ShopInfoActivity.this, "获取店铺信息失败 ");
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+		});
 
 	}
 
