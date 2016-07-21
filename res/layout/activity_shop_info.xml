@@ -73,14 +73,6 @@
                     <include
                         android:id="@+id/layout_type1"
                         layout="@layout/layout_text_img" />
-
-                    <include
-                        android:id="@+id/layout_type2"
-                        layout="@layout/layout_text_img" />
-
-                    <include
-                        android:id="@+id/layout_type3"
-                        layout="@layout/layout_text_img" />
                 </GridLayout>
             </LinearLayout>
 
@@ -193,25 +185,6 @@
 
             <include layout="@layout/layout_dividor" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:text="所在商圈："
-                    android:textSize="13sp" />
-
-                <include
-                    android:id="@+id/layout_business_area"
-                    layout="@layout/layout_text_img" />
-            </LinearLayout>
-
             <include layout="@layout/layout_dividor" />
 
             <LinearLayout
@@ -254,32 +227,12 @@
 
                 <ImageView
                     android:id="@+id/iv_shop1"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/icon_shop" />
-
-                <ImageView
-                    android:id="@+id/iv_shop2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:src="@drawable/icon_shop"
-                    android:visibility="gone" />
-
-                <ImageView
-                    android:id="@+id/iv_shop3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:src="@drawable/icon_shop"
-                    android:visibility="gone" />
             </LinearLayout>
 
             <include layout="@layout/layout_dividor" />
@@ -316,7 +269,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/goods"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
 
                 <ImageView
                     android:id="@+id/iv_goods3"
@@ -326,7 +279,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:src="@drawable/goods"
-                    android:visibility="gone" />
+                    android:visibility="invisible" >
+                </ImageView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

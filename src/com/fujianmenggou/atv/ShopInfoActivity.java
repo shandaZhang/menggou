@@ -7,6 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -133,10 +135,6 @@ public class ShopInfoActivity extends BaseActivity {
 				.getCompanyName());
 		((TextView) findViewById(R.id.layout_type1).findViewById(R.id.tv_1))
 				.setText(info.getType1());
-		((TextView) findViewById(R.id.layout_type2).findViewById(R.id.tv_1))
-				.setText(info.getType2());
-		((TextView) findViewById(R.id.layout_type3).findViewById(R.id.tv_1))
-				.setText(info.getType3());
 		((TextView) findViewById(R.id.layout_area1).findViewById(R.id.tv_1))
 				.setText(info.getArea1());
 		((TextView) findViewById(R.id.layout_area2).findViewById(R.id.tv_1))
@@ -150,8 +148,6 @@ public class ShopInfoActivity extends BaseActivity {
 		ArrayList<ImageView> ivShopList = new ArrayList<ImageView>();
 		ArrayList<ImageView> ivGoodsList = new ArrayList<ImageView>();
 		ivShopList.add((ImageView) findViewById(R.id.iv_shop1));
-		ivShopList.add((ImageView) findViewById(R.id.iv_shop2));
-		ivShopList.add((ImageView) findViewById(R.id.iv_shop3));
 		ivGoodsList.add((ImageView) findViewById(R.id.iv_goods1));
 		ivGoodsList.add((ImageView) findViewById(R.id.iv_goods2));
 		ivGoodsList.add((ImageView) findViewById(R.id.iv_goods3));
@@ -166,6 +162,7 @@ public class ShopInfoActivity extends BaseActivity {
 		if (info.getShowIcon() != null) {
 			for (int i = 0; i < info.getShowIcon().size()
 					&& i < ivGoodsList.size(); i++) {
+				ivGoodsList.get(i).setVisibility(View.VISIBLE);
 				bmp.display(ivGoodsList.get(i), info.getShowIcon().get(i),
 						displayConfig);
 			}
@@ -179,7 +176,8 @@ public class ShopInfoActivity extends BaseActivity {
 		// http://103.27.7.116:83/json/json.aspx?op=myShop&user_id=98
 		AjaxParams params = new AjaxParams();
 		params.put("op", "myShop");
-		params.put("user_id", userInfoPreferences.getString("uid", ""));
+		Log.e("menggou", userInfoPreferences.getString("uid", ""));
+		params.put("user_id", userInfoPreferences.getString("uid", "98"));
 		http.get(GlobalVars.url, params, new AjaxCallBack<String>() {
 
 			@Override
@@ -221,8 +219,8 @@ public class ShopInfoActivity extends BaseActivity {
 						shopInfo.setCompanyName(shopInfoObj.getString("title"));
 						shopInfo.setType1(shopInfoObj.getString("sold_type"));
 						shopInfo.setArea1(shopInfoObj.getString("provinceId"));
-						shopInfo.setArea1(shopInfoObj.getString("cityId"));
-						shopInfo.setArea1(shopInfoObj.getString("areaId"));
+						shopInfo.setArea2(shopInfoObj.getString("cityId"));
+						shopInfo.setArea3(shopInfoObj.getString("areaId"));
 						shopInfo.setPhone(shopInfoObj.getString("phone"));
 						shopInfo.setName(shopInfoObj.getString("name"));
 						shopInfo.setAddress(shopInfoObj.getString("address"));
@@ -231,7 +229,7 @@ public class ShopInfoActivity extends BaseActivity {
 						ArrayList<String> shopIcons = new ArrayList<String>();
 						ArrayList<String> showIcons = new ArrayList<String>();
 						shopIcons.add(shopInfoObj.getString("pic"));
-						JSONArray ls = obj.getJSONArray("ls");
+						JSONArray ls = shopInfoObj.getJSONArray("ls");
 						for (int i = 0; i < ls.length(); i++) {
 							JSONObject lsObj = ls.getJSONObject(i);
 							showIcons.add(GlobalVars.baseUrl
