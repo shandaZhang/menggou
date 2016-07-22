@@ -117,7 +117,8 @@ public class ShopPreViewActivity extends BaseActivity {
 
 			}
 		});
-		initData();
+		// initData();
+		getShopPreviewInfo();
 
 	}
 

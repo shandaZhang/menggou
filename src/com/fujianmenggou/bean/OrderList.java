@@ -2,12 +2,21 @@ package com.fujianmenggou.bean;
 
 public class OrderList {
 	private String title;// 商品名
+	private String id;// 商品id
 	private String detail;// 商品详情
 	private double price;// 商品单价
 	private double priceAll;// 合计
 	private boolean isChecked;// 是否被选中
 	private int number;// 数量
 	private String url;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getUrl() {
 		return url;

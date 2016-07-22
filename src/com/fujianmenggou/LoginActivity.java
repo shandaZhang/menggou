@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -69,6 +70,7 @@ public class LoginActivity extends BaseActivity implements ViewFactory {
 
 	@OnClick(R.id.btn_login)
 	public void onClick2DengLu(View v) {
+		Log.e("menggou","loginOnClick");
 		final String yonghuming = auto_username.getText().toString();
 		String mima = et_password.getText().toString();
 		// 调试时，不判断，直接跳到下一页
@@ -117,6 +119,7 @@ public class LoginActivity extends BaseActivity implements ViewFactory {
 								String mobile = array.getJSONObject(0)
 										.getString("mobile");
 
+								Log.e("menggou", "uid : " + id);
 								Editor editor = share.edit();
 								editor.putString("uid", id);
 								editor.putInt("gid", group_id);
@@ -216,7 +219,7 @@ public class LoginActivity extends BaseActivity implements ViewFactory {
 							Tools.showTextToast(LoginActivity.this, "登录失败 "
 									+ jsonObject.getString("msg"));
 					} catch (JSONException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 				}

@@ -17,6 +17,7 @@ import com.fujianmenggou.R;
 import com.fujianmenggou.adapter.BarrowAdapter;
 import com.fujianmenggou.bean.OrderList;
 import com.fujianmenggou.fm.InfoMationChangedListener;
+import com.fujianmenggou.util.Barrows;
 import com.fujianmenggou.util.BaseActivity;
 
 public class BarrowActivity extends BaseActivity implements
@@ -25,6 +26,7 @@ public class BarrowActivity extends BaseActivity implements
 	private ListView listview;
 	private TextView tvCount, tvPriceAll, tvComfirm;
 	private ArrayList<OrderList> dataList = new ArrayList<OrderList>();
+	private ArrayList<OrderList> barrows;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +34,15 @@ public class BarrowActivity extends BaseActivity implements
 		setContentView(R.layout.activity_barrow);
 		initFakeTitle();
 		setTitle("购物车");
-		initData();
+		barrows = Barrows.getInstance();
+
 		listview = (ListView) findViewById(R.id.listview);
 		View view = new View(this);
 		view.setLayoutParams(new AbsListView.LayoutParams(
 				AbsListView.LayoutParams.MATCH_PARENT,
 				(int) (70 * getResources().getDisplayMetrics().density)));
 		listview.addFooterView(view);
-		adapter = new BarrowAdapter(this, dataList, bmp, 15 * 168.00, 15, this);
+		adapter = new BarrowAdapter(this, barrows, bmp, 15 * 168.00, 15, this);
 		listview.setAdapter(adapter);
 		tvCount = (TextView) findViewById(R.id.tv_count);
 		tvPriceAll = (TextView) findViewById(R.id.tv_price_all);
