@@ -84,7 +84,8 @@ public class MainActivity extends BaseActivity implements OnPageChangeListener,
 		});
 		// viewPager.
 		viewPager.setOnPageChangeListener(this);
-		setSelect(0, true);
+		//setSelect(0, true);
+		setSelect(1, true);
 	}
 
 	@Override

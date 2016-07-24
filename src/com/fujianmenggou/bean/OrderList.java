@@ -1,5 +1,7 @@
 package com.fujianmenggou.bean;
 
+import android.R.integer;
+
 public class OrderList {
 	private String title;// 商品名
 	private String id;// 商品id
@@ -9,6 +11,24 @@ public class OrderList {
 	private boolean isChecked;// 是否被选中
 	private int number;// 数量
 	private String url;
+	private int status;	
+	private int addressId;
+
+	public int getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 	public String getId() {
 		return id;

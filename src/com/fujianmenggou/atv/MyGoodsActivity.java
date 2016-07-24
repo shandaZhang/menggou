@@ -87,6 +87,8 @@ public class MyGoodsActivity extends BaseActivity {
 			public void onFailure(Throwable t, int errorNo, String strMsg) {
 				super.onFailure(t, errorNo, strMsg);
 				Tools.DismissLoadingActivity(context);
+				listView.stopLoadMore();
+				listView.stopRefresh();
 			}
 
 			// {"result":"1","totalcount":12,"list":[{"id":15,"name":"羽绒衣","price":110.00,"oldprice":220.00,"stock":10000,"user_id":98,"add_time":"2016-07-13T23:09:08","sort_id":1,"pic":"http://103.27.7.116:83/upload/201607/13/201607132312093782.png"},
@@ -104,6 +106,8 @@ public class MyGoodsActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				super.onSuccess(t);
 				Tools.DismissLoadingActivity(context);
+				listView.stopLoadMore();
+				listView.stopRefresh();
 				LogUtils.i(t);
 				try {
 					JSONObject obj = new JSONObject(t);

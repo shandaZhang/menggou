@@ -83,13 +83,8 @@ public class GoodsShoppingMallAdapter extends BaseAdapter implements
 					R.id.layout_goods2).findViewById(R.id.tv_goods_price);
 			holder.tvTitle2 = (TextView) convertView.findViewById(
 					R.id.layout_goods2).findViewById(R.id.tv_goods_title);
-			convertView.findViewById(R.id.layout_goods1).setTag(position * 2);
-			convertView.findViewById(R.id.layout_goods2).setTag(
-					position * 2 + 1);
-			convertView.findViewById(R.id.layout_goods1).setOnClickListener(
-					this);
-			convertView.findViewById(R.id.layout_goods2).setOnClickListener(
-					this);
+			holder.layoutGoods1 = convertView.findViewById(R.id.layout_goods1);
+			holder.layoutGoods2 = convertView.findViewById(R.id.layout_goods2);
 
 			convertView.setTag(holder);
 		} else {
@@ -103,17 +98,16 @@ public class GoodsShoppingMallAdapter extends BaseAdapter implements
 
 		holder.tvPrice1.setText("¥" + goods1.getPrice());
 		holder.tvTitle1.setText(goods1.getTitle());
+		holder.layoutGoods1.setTag(position * 2);
+		holder.layoutGoods1.setOnClickListener(this);
 		bmp.display(holder.ivGoods1, goods1.getUrl(), displayConfig);
-		if (goods1.getUrl() == null) {
-			holder.ivGoods1.setImageResource(R.drawable.goods1);
-		}
+
 		if (goods2 != null) {
 			holder.tvPrice2.setText("¥" + goods2.getPrice());
 			holder.tvTitle2.setText(goods2.getTitle());
 			bmp.display(holder.ivGoods2, goods2.getUrl(), displayConfig);
-			if (goods2.getUrl() == null) {
-				holder.ivGoods2.setImageResource(R.drawable.goods2);
-			}
+			holder.layoutGoods2.setTag(position * 2 + 1);
+			holder.layoutGoods2.setOnClickListener(this);
 		} else {
 			holder.tvPrice2.setText("");
 			holder.tvTitle2.setText("");
@@ -127,6 +121,7 @@ public class GoodsShoppingMallAdapter extends BaseAdapter implements
 		TextView tvTitle1, tvTitle2;
 		TextView tvPrice1, tvPrice2;
 		ImageView ivGoods1, ivGoods2;
+		View layoutGoods1, layoutGoods2;
 
 	}
 

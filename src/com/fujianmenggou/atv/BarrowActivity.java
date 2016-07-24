@@ -27,6 +27,8 @@ public class BarrowActivity extends BaseActivity implements
 	private TextView tvCount, tvPriceAll, tvComfirm;
 	private ArrayList<OrderList> dataList = new ArrayList<OrderList>();
 	private ArrayList<OrderList> barrows;
+	private double priceAll = 0;
+	private int countAll = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,11 @@ public class BarrowActivity extends BaseActivity implements
 		setContentView(R.layout.activity_barrow);
 		initFakeTitle();
 		setTitle("购物车");
-		barrows = Barrows.getInstance();
+		barrows = Barrows.getInstance().getBarrowList();
+		for (OrderList item : barrows) {
+			priceAll += item.getPrice() * item.getNumber();
+			countAll += item.getNumber();
+		}
 
 		listview = (ListView) findViewById(R.id.listview);
 		View view = new View(this);
@@ -42,7 +48,8 @@ public class BarrowActivity extends BaseActivity implements
 				AbsListView.LayoutParams.MATCH_PARENT,
 				(int) (70 * getResources().getDisplayMetrics().density)));
 		listview.addFooterView(view);
-		adapter = new BarrowAdapter(this, barrows, bmp, 15 * 168.00, 15, this);
+		adapter = new BarrowAdapter(this, barrows, bmp, priceAll, countAll,
+				this);
 		listview.setAdapter(adapter);
 		tvCount = (TextView) findViewById(R.id.tv_count);
 		tvPriceAll = (TextView) findViewById(R.id.tv_price_all);
@@ -57,8 +64,8 @@ public class BarrowActivity extends BaseActivity implements
 
 			}
 		});
-		tvCount.setText("共" + 15 + "件商品");
-		tvPriceAll.setText("合计：¥" + 15 * 168.00 + "元");
+		tvCount.setText("共" + countAll + "件商品");
+		tvPriceAll.setText("合计：¥" + priceAll + "元");
 
 	}
 

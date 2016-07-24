@@ -148,6 +148,7 @@
                     android:background="@color/hui_gray" />
 
                 <TextView
+                    android:id="@+id/tv_goods_attr_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -164,7 +165,7 @@
                 <TextView
                     android:id="@+id/tv_assessment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#EFEFEF"
                     android:gravity="center"
@@ -183,10 +184,22 @@
                 android:layout_weight="1" >
 
                 <LinearLayout
-                    android:id="@+id/layout_goods_attribute"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
+
+                    <ListView
+                        android:id="@+id/lsv_assess"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@null"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_goods_attr"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

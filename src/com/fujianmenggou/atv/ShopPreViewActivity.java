@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ImageView.ScaleType;
@@ -28,6 +29,7 @@ import com.fujianmenggou.util.XListView.IXListViewListener;
 
 import dujc.dtools.afinal.http.AjaxCallBack;
 import dujc.dtools.afinal.http.AjaxParams;
+import dujc.dtools.xutils.bitmap.BitmapCommonUtils;
 import dujc.dtools.xutils.bitmap.BitmapDisplayConfig;
 import dujc.dtools.xutils.util.LogUtils;
 
@@ -56,14 +58,16 @@ public class ShopPreViewActivity extends BaseActivity {
 
 			@Override
 			public void onRefresh() {
-				// TODO Auto-generated method stub
+				pageIndex = 1;
+				getShopPreviewInfo();
 
 			}
 
 			//
 			@Override
 			public void onLoadMore() {
-				// TODO Auto-generated method stub
+				pageIndex++;
+				getShopPreviewInfo();
 
 			}
 		});
@@ -156,7 +160,7 @@ public class ShopPreViewActivity extends BaseActivity {
 		// http://103.27.7.116:83/json/json.aspx?op=myShopGoods&user_id=98&pageSize=10&pageIndex=1&shop_id=1
 		AjaxParams params = new AjaxParams();
 		params.put("op", "myShopGoods");
-		params.put("user_id", userInfoPreferences.getString("uid", ""));
+		params.put("user_id", userInfoPreferences.getString("id", ""));
 		params.put("shop_id", "1");
 		params.put("pageSize", "10");
 		params.put("pageIndex", pageIndex + "");
@@ -179,6 +183,14 @@ public class ShopPreViewActivity extends BaseActivity {
 				listView.stopLoadMore();
 				listView.stopRefresh();
 				LogUtils.i(t);
+				displayConfig = new BitmapDisplayConfig();
+				// displayConfig.setShowOriginal(true); // 显示原始图片,不压缩, 尽量不要使用,
+				// 图片太大时容易OOM。
+				displayConfig.setBitmapMaxSize(BitmapCommonUtils
+						.getScreenSize(context));
+				AlphaAnimation animation = new AlphaAnimation(0.1f, 1.0f);
+				animation.setDuration(500);
+				displayConfig.setAnimation(animation);
 
 				// {"result":"1","totalcount":12,"shoplist":
 				// ["/upload/201606/07/201606070043074121.png","美美水果店",
@@ -208,7 +220,10 @@ public class ShopPreViewActivity extends BaseActivity {
 									ShopPreViewActivity.this);
 							iv.setScaleType(ScaleType.FIT_XY);
 							viewContainter.add(iv);
-							bmp.display(iv, shopImg.getString("thumb_path"),
+							bmp.display(
+									iv,
+									GlobalVars.baseUrl
+											+ shopImg.getString("thumb_path"),
 									displayConfig);
 							ImageView dot = new ImageView(
 									ShopPreViewActivity.this);

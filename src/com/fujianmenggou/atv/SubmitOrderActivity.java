@@ -3,8 +3,13 @@ package com.fujianmenggou.atv;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,23 +31,33 @@ import com.android.volley.toolbox.AndroidAuthenticator;
 import com.fujianmenggou.R;
 import com.fujianmenggou.adapter.OrderAdapter;
 import com.fujianmenggou.bean.OrderList;
+import com.fujianmenggou.bean.UserAddress;
+import com.fujianmenggou.bean.UserInfo;
 import com.fujianmenggou.ckw.PullToRefreshBase;
 import com.fujianmenggou.ckw.PullToRefreshListView;
 import com.fujianmenggou.ckw.PullToRefreshBase.OnRefreshListener;
+import com.fujianmenggou.util.Barrows;
 import com.fujianmenggou.util.BaseActivity;
+import com.fujianmenggou.util.GlobalVars;
+import com.fujianmenggou.util.Tools;
 
+import dujc.dtools.afinal.http.AjaxCallBack;
+import dujc.dtools.afinal.http.AjaxParams;
 import dujc.dtools.xutils.bitmap.BitmapCommonUtils;
 import dujc.dtools.xutils.bitmap.BitmapDisplayConfig;
+import dujc.dtools.xutils.util.LogUtils;
 
 public class SubmitOrderActivity extends BaseActivity {
-	private ArrayList<OrderList> orderLists = new ArrayList<OrderList>();
+	private ArrayList<OrderList> orderLists;
 	private LinearLayout layoutGoods, layoutAddress;
 	private BitmapDisplayConfig displayConfig;
 	private double moneyPay = 0;
 	private int countAll = 0;
-	private TextView tvDelete;
+	private TextView tvDelete, tvSubmit;
 	private Spinner postStyle;
 	private TextView tvMoneyRemain, tvGoodsCount, tvPriceAll;
+	private TextView tvName, tvPhone, tvAddress;
+	private UserAddress address;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +66,24 @@ public class SubmitOrderActivity extends BaseActivity {
 		initFakeTitle();
 		setTitle("提交订单");
 		initView();
-		initData();
+		orderLists = Barrows.getInstance().getBarrowList();
+		// initData();
 		updateView();
+
+	}
+
+	@Override
+	protected void onStart() {
+		Log.e("menggou", "onStart");
+		super.onStart();
+		if (address == null) {
+			address = Barrows.getInstance().getAddress();
+		}
+		if (address != null) {
+			tvName.setText(address.getName());
+			tvPhone.setText(address.getTel());
+			tvAddress.setText(address.getAddress());
+		}
 
 	}
 
@@ -83,15 +114,43 @@ public class SubmitOrderActivity extends BaseActivity {
 		tvGoodsCount = (TextView) findViewById(R.id.tv_goods_count);
 		tvPriceAll = (TextView) findViewById(R.id.tv_price_all);
 		layoutAddress = (LinearLayout) findViewById(R.id.layout_address);
+		tvName = (TextView) findViewById(R.id.tv_name);
+		tvPhone = (TextView) findViewById(R.id.tv_phone);
+		tvAddress = (TextView) findViewById(R.id.tv_address);
+		tvSubmit = (TextView) findViewById(R.id.tv_submit);
 		layoutAddress.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(SubmitOrderActivity.this,
 						AddressActivity.class);
-				startActivity(intent);
+				startActivityForResult(intent, 0);
 
 			}
+		});
+		tvSubmit.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				String goodsIds = "";
+				String counts = "";
+				for (int i = 0; i < orderLists.size(); i++) {
+					OrderList data = orderLists.get(i);
+					if (data.isChecked()) {
+						if (!goodsIds.equals("")) {
+							goodsIds += ",";
+						}
+						goodsIds += data.getId();
+						if (!counts.equals("")) {
+							counts += ",";
+						}
+						counts += data.getNumber();
+
+					}
+				}
+				buy(goodsIds, counts);
+			}
+
 		});
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -147,6 +206,7 @@ public class SubmitOrderActivity extends BaseActivity {
 	}
 
 	private void updateView() {
+		Log.e("menggou", "orderLists.size():" + orderLists.size());
 		for (int i = 0; i < orderLists.size(); i++) {
 			final OrderList data = orderLists.get(i);
 			LinearLayout goods = (LinearLayout) LayoutInflater.from(context)
@@ -186,7 +246,8 @@ public class SubmitOrderActivity extends BaseActivity {
 						public void onCheckedChanged(CompoundButton buttonView,
 								boolean isChecked) {
 							if (!isChecked) {
-								moneyPay = moneyPay - data.getPriceAll();
+								moneyPay = moneyPay - data.getNumber()
+										* data.getPrice();
 								countAll = countAll - data.getNumber();
 								data.setChecked(false);
 								tvGoodsCount.setText("共" + countAll + "件商品");
@@ -194,7 +255,8 @@ public class SubmitOrderActivity extends BaseActivity {
 										.setText("合计 ：" + moneyPay);
 
 							} else {
-								moneyPay = moneyPay + data.getPriceAll();
+								moneyPay = moneyPay + data.getPrice()
+										* data.getNumber();
 								countAll = countAll + data.getNumber();
 								data.setChecked(true);
 								tvGoodsCount.setText("共" + countAll + "件商品");
@@ -208,13 +270,17 @@ public class SubmitOrderActivity extends BaseActivity {
 			tvDetail.setText(data.getDetail());
 			tvPrice.setText("¥" + data.getPrice() + "x" + data.getNumber());
 			tvPriceAll.setText(data.getPrice() * data.getNumber() + "");
+			data.setChecked(false);
 			cbIsChecked.setChecked(data.isChecked());
 			if (data.getUrl() != null)
 				bmp.display(iv, data.getUrl(), displayConfig);
+			Log.e("menggou", "moneyPay: " + moneyPay + " countAll: " + countAll);
 			if (data.isChecked()) {
-				moneyPay += data.getPriceAll();
+				Log.e("menggou", "number: " + data.getNumber());
+				moneyPay += data.getPrice() * data.getNumber();
 				countAll += data.getNumber();
 			}
+			Log.e("menggou", "moneyPay: " + moneyPay + " countAll: " + countAll);
 			layoutGoods.addView(goods);
 			if (i < orderLists.size() - 1) {
 				layoutGoods.addView(dividor);
@@ -222,7 +288,61 @@ public class SubmitOrderActivity extends BaseActivity {
 
 		}
 		tvGoodsCount.setText("共" + countAll + "件商品");
-		tvPriceAll.setText("合计 ：" + moneyPay);
+		SubmitOrderActivity.this.tvPriceAll.setText("合计 ：" + moneyPay);
 
 	}
+
+	@Override
+	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+		Log.e("menggou", "onActivityResult");
+		if (arg2 != null) {
+			address = (UserAddress) arg2.getSerializableExtra("address");
+			if (address != null) {
+				tvName.setText(address.getName());
+				tvPhone.setText(address.getTel());
+				tvAddress.setText(address.getAddress());
+			}
+		}
+		super.onActivityResult(arg0, arg1, arg2);
+	}
+
+	private void buy(String goodsIds, String counts) {
+		// http://103.27.7.116:83/json/json.aspx?op=buyGoods&user_id=98&address_id=1&goods_id_list=1,2,3&countlist=2,3,5
+		if (address == null) {
+			Tools.showTextToast(context, "请选择收货地址");
+			return;
+		}
+		Tools.ShowLoadingActivity(context);
+		AjaxParams params = new AjaxParams();
+		params.put("op", "buyGoods");
+		params.put("user_id", userInfoPreferences.getString("id", ""));
+		params.put("address_id", address.getId());
+		params.put("goods_id_list", goodsIds);
+		params.put("countlist", counts);
+
+		http.get(GlobalVars.url, params, new AjaxCallBack<String>() {
+			@Override
+			public void onFailure(Throwable t, int errorNo, String strMsg) {
+				super.onFailure(t, errorNo, strMsg);
+				Tools.DismissLoadingActivity(context);
+				Tools.showTextToast(context, "下单失败");
+			}
+
+			@Override
+			public void onSuccess(String t) {
+				super.onSuccess(t);
+				Tools.DismissLoadingActivity(context);
+				LogUtils.i(t);
+
+				Intent intent = new Intent();
+				intent.setAction("android.intent.action.VIEW");
+				Uri content_url = Uri.parse(t);
+				intent.setData(content_url);
+				startActivity(intent);
+
+			}
+		});
+
+	}
+
 }

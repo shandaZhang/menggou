@@ -154,7 +154,7 @@ public class BarrowAdapter extends BaseAdapter {
 		holder.tvTitle.setText(data.getTitle());
 		holder.tvDetail.setText(data.getDetail());
 		holder.tvPrice.setText("¥" + data.getPrice() + "x" + data.getNumber());
-		holder.tvPriceAll.setText("¥" + data.getPriceAll());
+		holder.tvPriceAll.setText("¥" + data.getPrice() * data.getNumber());
 		holder.tvNumber.setText(data.getNumber() + "");
 		Log.e("menggou", "number: " + data.getNumber());
 		if (data.getUrl() != null)

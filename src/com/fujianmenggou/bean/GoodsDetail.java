@@ -5,12 +5,14 @@ import java.util.HashMap;
 public class GoodsDetail {
 	private double priceNow;
 	private double priceMarket;
-
+	private String url;
 	private String name;
 	private String remainningTime;
 	private int assessmentNum;
 	private String content;
-	private HashMap<String, String> attrs;
+	// private HashMap<String, String> attrs;
+	private String attrs;
+
 	private String goodsId;
 
 	public double getPriceMarket() {
@@ -61,13 +63,13 @@ public class GoodsDetail {
 		this.content = content;
 	}
 
-	public HashMap<String, String> getAttrs() {
-		return attrs;
-	}
+	// public HashMap<String, String> getAttrs() {
+	// return attrs;
+	// }
 
-	public void setAttrs(HashMap<String, String> attrs) {
-		this.attrs = attrs;
-	}
+	// public void setAttrs(HashMap<String, String> attrs) {
+	// this.attrs = attrs;
+	// }
 
 	public String getGoodsId() {
 		return goodsId;
@@ -75,6 +77,22 @@ public class GoodsDetail {
 
 	public void setGoodsId(String goodsId) {
 		this.goodsId = goodsId;
+	}
+
+	public String getAttrs() {
+		return attrs;
+	}
+
+	public void setAttrs(String attrs) {
+		this.attrs = attrs;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

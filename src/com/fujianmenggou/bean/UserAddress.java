@@ -1,11 +1,22 @@
 package com.fujianmenggou.bean;
 
-public class UserAddress {
+import java.io.Serializable;
+
+public class UserAddress implements Serializable {
 	private String name;
 	private String tel;
 	private String address;
 	private boolean isDefault;
 	private boolean isChecked;
+	private String id;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;

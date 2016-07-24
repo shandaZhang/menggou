@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:background="#EFFFFE"
     android:orientation="vertical" >
 
@@ -16,6 +17,7 @@
         android:orientation="horizontal" >
 
         <CheckBox
+            android:id="@+id/cb"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -56,29 +58,8 @@
                 android:padding="5dp"
                 android:text="广东省 广州市 越秀区 中山六路232号越秀新都会大厦" />
         </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text=">" />
     </LinearLayout>
 
     <include layout="@layout/layout_dividor" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-        
-    </LinearLayout>
 
 </LinearLayout>
