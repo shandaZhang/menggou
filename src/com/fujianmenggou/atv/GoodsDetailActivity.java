@@ -32,6 +32,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 
+import com.bumptech.glide.Glide;
 import com.fujianmenggou.R;
 import com.fujianmenggou.bean.GoodsAssesment;
 import com.fujianmenggou.bean.GoodsDetail;
@@ -337,11 +338,15 @@ public class GoodsDetailActivity extends BaseActivity {
 									GoodsDetailActivity.this);
 							iv.setScaleType(ScaleType.FIT_XY);
 							viewContainter.add(iv);
-							bmp.display(
-									iv,
-									GlobalVars.baseUrl
-											+ shopImg.getString("thumb_path"),
-									displayConfig);
+							// bmp.display(
+							// iv,
+							// GlobalVars.baseUrl
+							// + shopImg.getString("thumb_path"),
+							// displayConfig);
+							Glide.with(GoodsDetailActivity.this)
+									.load(GlobalVars.baseUrl
+											+ shopImg.getString("thumb_path"))
+									.into(iv);
 							ImageView dot = new ImageView(
 									GoodsDetailActivity.this);
 							dot.setImageResource(R.drawable.icon_pot_unselected);

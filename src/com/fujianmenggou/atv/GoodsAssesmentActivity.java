@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
+import com.bumptech.glide.Glide;
 import com.fujianmenggou.R;
 import com.fujianmenggou.bean.GoodsAssesment;
 import com.fujianmenggou.bean.OrderList;
@@ -132,7 +133,7 @@ public class GoodsAssesmentActivity extends BaseActivity {
 					.findViewById(R.id.tv_goods_title);
 			TextView tvDetail = (TextView) goods
 					.findViewById(R.id.tv_goods_detail);
-			View iv = goods.findViewById(R.id.iv_goods);
+			ImageView iv = (ImageView) goods.findViewById(R.id.iv_goods);
 			ivStar1 = (ImageView) goods.findViewById(R.id.iv_star1);
 			ivStar2 = (ImageView) goods.findViewById(R.id.iv_star2);
 			ivStar3 = (ImageView) goods.findViewById(R.id.iv_star3);
@@ -149,7 +150,9 @@ public class GoodsAssesmentActivity extends BaseActivity {
 			tvDetail.setText(data.getContent());
 
 			if (data.getUrl() != null)
-				bmp.display(iv, data.getUrl(), displayConfig);
+				// bmp.display(iv, data.getUrl(), displayConfig);
+				Glide.with(GoodsAssesmentActivity.this).load(data.getUrl())
+						.into(iv);
 
 			layoutGoods.addView(goods);
 			if (i < assesmentsLists.size() - 1) {

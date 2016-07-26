@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.fujianmenggou.R;
 import com.fujianmenggou.adapter.GoodsShoppingMallAdapter;
 import com.fujianmenggou.atv.BarrowActivity;
@@ -39,6 +40,8 @@ import dujc.dtools.afinal.http.AjaxCallBack;
 import dujc.dtools.afinal.http.AjaxParams;
 import dujc.dtools.xutils.bitmap.BitmapCommonUtils;
 import dujc.dtools.xutils.bitmap.BitmapDisplayConfig;
+import dujc.dtools.xutils.bitmap.core.BitmapDecoder;
+import dujc.dtools.xutils.bitmap.factory.BitmapFactory;
 import dujc.dtools.xutils.util.LogUtils;
 
 public class ShoppingMallFragment extends ViewPagerFragment implements
@@ -168,7 +171,6 @@ public class ShoppingMallFragment extends ViewPagerFragment implements
 		displayConfig = new BitmapDisplayConfig();
 		// displayConfig.setShowOriginal(true); // 显示原始图片,不压缩, 尽量不要使用,
 		// 图片太大时容易OOM。
-
 		displayConfig
 				.setBitmapMaxSize(BitmapCommonUtils.getScreenSize(context));
 		AlphaAnimation animation = new AlphaAnimation(0.1f, 1.0f);
@@ -262,14 +264,20 @@ public class ShoppingMallFragment extends ViewPagerFragment implements
 						JSONArray shoplist = obj.getJSONArray("shoplist");
 						Log.e("menggou", "开始处理店铺轮播图");
 						for (int i = 0; i < shoplist.length(); i++) {
-							Log.e("menggou", "i : "+i);
+							Log.e("menggou", "i : " + i);
 							JSONObject shopImg = shoplist.getJSONObject(i);
 							ImageView iv = new ImageView(getActivity());
 							iv.setScaleType(ScaleType.FIT_XY);
 							viewContainter.add(iv);
 							Log.e("menggou", "step 0");
-							bmp.display(iv, shopImg.getString("thumb_path"),
-									displayConfig);
+							Log.e("menggou",
+									"iv:" + iv + " url:"
+											+ shopImg.getString("thumb_path")
+											+ " disconfig:" + displayConfig);
+							// bmp.display(iv, shopImg.getString("thumb_path"),
+							// displayConfig);
+							//bmp.display(iv, shopImg.getString("thumb_path"));
+							Glide.with(context).load(shopImg.getString("thumb_path")).into(iv);
 							Log.e("menggou", "step 1");
 							ImageView dot = new ImageView(getActivity());
 							dot.setImageResource(R.drawable.icon_pot_unselected);
