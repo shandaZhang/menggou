@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import dujc.dtools.BitmapUtils;
 import dujc.dtools.FinalHttp;
@@ -11,7 +12,7 @@ import dujc.dtools.FinalHttp;
 public class BaseFragment extends Fragment {
 	protected FinalHttp http;
 	protected BitmapUtils bmp;
-//	protected FinalDb db;
+	// protected FinalDb db;
 	protected LayoutInflater layoutInflater;
 	protected Context context;
 	protected SharedPreferences userInfoPreferences;
@@ -19,22 +20,26 @@ public class BaseFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		Log.e("menggou", getClass().getSimpleName() + "oncreate ");
 		super.onCreate(savedInstanceState);
-		layoutInflater=(LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
-		http=new FinalHttp();
-		bmp=new BitmapUtils(getActivity(), Tools.getSDPath()+"/.bsetpay/imagecahce");
-		bmp.configDiskCacheEnabled(true);
-		context=getActivity();
+		layoutInflater = (LayoutInflater) getActivity().getSystemService(
+				Context.LAYOUT_INFLATER_SERVICE);
 
-		userInfoPreferences = context.getSharedPreferences("user_info", Context.MODE_PRIVATE);
+		http = new FinalHttp();
+		bmp = new BitmapUtils(getActivity(), Tools.getSDPath()
+				+ "/.bsetpay/imagecahce");
+		bmp.configDiskCacheEnabled(true);
+		context = getActivity();
+
+		userInfoPreferences = context.getSharedPreferences("user_info",
+				Context.MODE_PRIVATE);
 	}
 
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		if(bmp!=null)
+		if (bmp != null)
 			bmp.resume();
 	}
 
@@ -42,7 +47,7 @@ public class BaseFragment extends Fragment {
 	public void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		if(bmp!=null)
+		if (bmp != null)
 			bmp.pause();
 	}
 
@@ -50,7 +55,7 @@ public class BaseFragment extends Fragment {
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		if(bmp!=null)
+		if (bmp != null)
 			bmp.cancel();
 	}
 

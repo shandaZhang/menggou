@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -75,14 +76,18 @@ public class MainActivity extends BaseActivity implements OnPageChangeListener,
 				}
 				IndexFragment fragment = new IndexFragment();
 				return fragment;
+
 			}
 
 			@Override
 			public int getCount() {
 				return fragments.length;
+
 			}
 		});
 		// viewPager.
+		// Log.e("menggou", "limit : " + viewPager.getOffscreenPageLimit());
+		// viewPager.setOffscreenPageLimit(1);
 		viewPager.setOnPageChangeListener(this);
 		setSelect(0, true);
 		// setSelect(1, true);

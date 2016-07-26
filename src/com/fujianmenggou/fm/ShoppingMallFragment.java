@@ -8,11 +8,11 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +30,6 @@ import com.fujianmenggou.R;
 import com.fujianmenggou.adapter.GoodsShoppingMallAdapter;
 import com.fujianmenggou.atv.BarrowActivity;
 import com.fujianmenggou.bean.GoodsList;
-import com.fujianmenggou.util.BaseFragment;
 import com.fujianmenggou.util.GlobalVars;
 import com.fujianmenggou.util.Tools;
 import com.fujianmenggou.util.XListView;
@@ -42,13 +41,12 @@ import dujc.dtools.xutils.bitmap.BitmapCommonUtils;
 import dujc.dtools.xutils.bitmap.BitmapDisplayConfig;
 import dujc.dtools.xutils.util.LogUtils;
 
-public class ShoppingMallFragment extends BaseFragment implements
+public class ShoppingMallFragment extends ViewPagerFragment implements
 		OnClickListener {
 	private View rootView;// 缓存的界面
 	private ViewPager viewPager;
 	private ArrayList<GoodsList> goodsLists = new ArrayList<GoodsList>();
 	// private ArrayList<ImageView> dots = new ArrayList<ImageView>();
-	private ArrayList<String> ivPagerUrls = new ArrayList<String>();
 	private ArrayList<ImageView> viewContainter = new ArrayList<ImageView>();
 	private LinearLayout layoutDots;
 	private ImageView ivDots;
@@ -119,6 +117,7 @@ public class ShoppingMallFragment extends BaseFragment implements
 				@Override
 				public void destroyItem(ViewGroup container, int position,
 						Object object) {
+					Log.e("menggou", "destory item");
 					((ViewPager) container).removeView(viewContainter
 							.get(position));
 				}
@@ -126,6 +125,7 @@ public class ShoppingMallFragment extends BaseFragment implements
 				// 每次滑动的时候生成的组件
 				@Override
 				public Object instantiateItem(ViewGroup container, int position) {
+					Log.e("menggou", "instantiateItem");
 					((ViewPager) container).addView(viewContainter
 							.get(position));
 					return viewContainter.get(position);
@@ -168,12 +168,14 @@ public class ShoppingMallFragment extends BaseFragment implements
 		displayConfig = new BitmapDisplayConfig();
 		// displayConfig.setShowOriginal(true); // 显示原始图片,不压缩, 尽量不要使用,
 		// 图片太大时容易OOM。
+
 		displayConfig
 				.setBitmapMaxSize(BitmapCommonUtils.getScreenSize(context));
 		AlphaAnimation animation = new AlphaAnimation(0.1f, 1.0f);
 		animation.setDuration(500);
 		displayConfig.setAnimation(animation);
-		getShopMallInfo();
+
+		layzyLoad();
 		return rootView;
 
 	}
@@ -258,20 +260,26 @@ public class ShoppingMallFragment extends BaseFragment implements
 					if (obj.getInt("result") == 1) {
 						// 店铺轮播图列表
 						JSONArray shoplist = obj.getJSONArray("shoplist");
+						Log.e("menggou", "开始处理店铺轮播图");
 						for (int i = 0; i < shoplist.length(); i++) {
+							Log.e("menggou", "i : "+i);
 							JSONObject shopImg = shoplist.getJSONObject(i);
 							ImageView iv = new ImageView(getActivity());
 							iv.setScaleType(ScaleType.FIT_XY);
 							viewContainter.add(iv);
+							Log.e("menggou", "step 0");
 							bmp.display(iv, shopImg.getString("thumb_path"),
 									displayConfig);
+							Log.e("menggou", "step 1");
 							ImageView dot = new ImageView(getActivity());
 							dot.setImageResource(R.drawable.icon_pot_unselected);
 							layoutDots.addView(dot);
 						}
+						Log.e("menggou", "开始处理轮播图下面的点");
 						ivDots = (ImageView) layoutDots.getChildAt(0);
 						ivDots.setImageResource(R.drawable.icon_pot_selected);
 
+						Log.e("menggou", "开始处理商品列表");
 						// 商品列表
 						JSONArray list = obj.getJSONArray("list");
 						if (pageIndex == 1)
@@ -285,6 +293,7 @@ public class ShoppingMallFragment extends BaseFragment implements
 							goods.setUrl(goodsObj.getString("pic"));
 							goodsLists.add(goods);
 						}
+						Log.e("menggou", "获取的回报处理了，等待界面更新");
 						adapter.notifyDataSetChanged();
 						viewPager.getAdapter().notifyDataSetChanged();
 
@@ -296,5 +305,12 @@ public class ShoppingMallFragment extends BaseFragment implements
 			}
 		});
 
+	}
+
+	@Override
+	protected void layzyLoad() {
+		if (rootView != null && isVisible) {
+			getShopMallInfo();
+		}
 	}
 }

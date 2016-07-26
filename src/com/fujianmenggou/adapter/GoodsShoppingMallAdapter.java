@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.crypto.spec.IvParameterSpec;
 
 import com.baidu.mapapi.common.Logger;
+import com.bumptech.glide.Glide;
 import com.fujianmenggou.R;
 import com.fujianmenggou.atv.GoodsDetailActivity;
 import com.fujianmenggou.bean.GoodsList;
@@ -66,6 +67,7 @@ public class GoodsShoppingMallAdapter extends BaseAdapter implements
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
+		Log.e("menggou", "getView position: " + position);
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.goods_list_item, null);
@@ -101,11 +103,13 @@ public class GoodsShoppingMallAdapter extends BaseAdapter implements
 		holder.layoutGoods1.setTag(position * 2);
 		holder.layoutGoods1.setOnClickListener(this);
 		bmp.display(holder.ivGoods1, goods1.getUrl(), displayConfig);
+		Glide.with(context).load(goods1.getUrl()).into(holder.ivGoods1);
 
 		if (goods2 != null) {
 			holder.tvPrice2.setText("¥" + goods2.getPrice());
 			holder.tvTitle2.setText(goods2.getTitle());
 			bmp.display(holder.ivGoods2, goods2.getUrl(), displayConfig);
+			Glide.with(context).load(goods2.getUrl()).into(holder.ivGoods2);
 			holder.layoutGoods2.setTag(position * 2 + 1);
 			holder.layoutGoods2.setOnClickListener(this);
 		} else {
