@@ -8,6 +8,7 @@ import com.fujianmenggou.bean.OrderList;
 import com.fujianmenggou.fm.GetInnerListDataListener;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,8 @@ public class InOrderAdapter extends BaseAdapter {
 
 			holder.tvTitle = (TextView) convertView
 					.findViewById(R.id.tv_goods_title);
+			holder.ivGoods = (ImageView) convertView
+					.findViewById(R.id.iv_goods);
 			holder.tvPrice = (TextView) convertView
 					.findViewById(R.id.tv_goods_price);
 			holder.tvPriceAll = (TextView) convertView
@@ -61,13 +64,18 @@ public class InOrderAdapter extends BaseAdapter {
 		} else
 			holder = (ViewHolder) convertView.getTag();
 		OrderList data = orderLists.get(position);
-		holder.tvDetail.setText(data.getDetail());
-		holder.tvTitle.setText(data.getTitle());
-		holder.tvPrice.setText("¥" + data.getPrice() + "x" + data.getNumber());
-		holder.tvPriceAll.setText(data.getPrice() * data.getNumber() + "");
-		holder.cbIsChecked.setChecked(data.isChecked());
-		// holder.ivGoods.setImageResource(R.drawable.goods);
-		Glide.with(context).load(data.getUrl()).into(holder.ivGoods);
+		try {
+			holder.tvDetail.setText(data.getDetail());
+			holder.tvTitle.setText(data.getTitle());
+			holder.tvPrice.setText("¥" + data.getPrice() + "x"
+					+ data.getNumber());
+			holder.tvPriceAll.setText(data.getPrice() * data.getNumber() + "");
+			holder.cbIsChecked.setChecked(data.isChecked());
+			// holder.ivGoods.setImageResource(R.drawable.goods);
+			Glide.with(context).load(data.getUrl()).into(holder.ivGoods);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 		return convertView;
 	}
 

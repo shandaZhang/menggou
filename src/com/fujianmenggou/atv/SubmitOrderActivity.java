@@ -67,7 +67,14 @@ public class SubmitOrderActivity extends BaseActivity {
 		initFakeTitle();
 		setTitle("提交订单");
 		initView();
-		orderLists = Barrows.getInstance().getBarrowList();
+		if (getIntent().getSerializableExtra("order") == null) {
+			orderLists = Barrows.getInstance().getBarrowList();
+		} else {
+			orderLists = new ArrayList<OrderList>();
+			OrderList order = (OrderList) getIntent().getSerializableExtra(
+					"order");
+			orderLists.add(order);
+		}
 		// initData();
 		updateView();
 
@@ -275,7 +282,8 @@ public class SubmitOrderActivity extends BaseActivity {
 			cbIsChecked.setChecked(data.isChecked());
 			if (data.getUrl() != null)
 				// bmp.display(iv, data.getUrl(), displayConfig);
-				Glide.with(SubmitOrderActivity.this).load(data.getUrl()).into(iv);
+				Glide.with(SubmitOrderActivity.this).load(data.getUrl())
+						.into(iv);
 			Log.e("menggou", "moneyPay: " + moneyPay + " countAll: " + countAll);
 			if (data.isChecked()) {
 				Log.e("menggou", "number: " + data.getNumber());

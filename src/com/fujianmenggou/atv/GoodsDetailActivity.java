@@ -407,7 +407,7 @@ public class GoodsDetailActivity extends BaseActivity {
 							assetsments.add(map);
 						}
 						assessAdapter.notifyDataSetChanged();
-					} else {
+					} else if (obj.getInt("result") == -1) {
 						Tools.showTextToast(context, "获取商品评价列表失败");
 					}
 
@@ -428,8 +428,21 @@ public class GoodsDetailActivity extends BaseActivity {
 		if (defaultAddress != null)
 			defaultAddr = defaultAddress.getId();
 		if (TextUtils.isEmpty(defaultAddr)) {
-			Tools.showTextToast(context, "未设置默认地址，请添加到购物车后购买");
-			return;
+			Intent intent = new Intent(GoodsDetailActivity.this,
+					SubmitOrderActivity.class);
+			OrderList order = new OrderList();
+			order.setChecked(false);
+			order.setDetail(detail.getContent());
+			order.setId(detail.getGoodsId());
+			order.setNumber(Integer.valueOf(tvNum.getText().toString()));
+			order.setPrice(detail.getPriceNow());
+			order.setTitle(detail.getName());
+			order.setUrl(detail.getUrl());
+			intent.putExtra("order", order);
+			GoodsDetailActivity.this.startActivity(intent);
+
+			// Tools.showTextToast(context, "未设置默认地址，请添加到购物车后购买");
+			// return;
 		}
 		Tools.ShowLoadingActivity(context);
 		AjaxParams params = new AjaxParams();

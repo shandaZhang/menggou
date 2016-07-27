@@ -1,8 +1,10 @@
 package com.fujianmenggou.bean;
 
+import java.io.Serializable;
+
 import android.R.integer;
 
-public class OrderList {
+public class OrderList implements Serializable{
 	private String title;// 商品名
 	private String id;// 商品id
 	private String detail;// 商品详情
