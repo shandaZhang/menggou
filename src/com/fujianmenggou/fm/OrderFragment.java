@@ -25,7 +25,9 @@ import dujc.dtools.afinal.http.AjaxCallBack;
 import dujc.dtools.afinal.http.AjaxParams;
 import dujc.dtools.xutils.util.LogUtils;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.net.wifi.WifiConfiguration.Status;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -57,12 +59,96 @@ public class OrderFragment extends BaseFragment implements OnClickListener {
 
 	}
 
+	private OrderManageOperator operator = new OrderManageOperator() {
+
+		@Override
+		public void receiveGoods(String orderId) {
+
+			// http://103.27.7.116:83/json/json.aspx?op=order_Receiving&orders_id=1
+			Tools.ShowLoadingActivity(context);
+			AjaxParams params = new AjaxParams();
+			params.put("op", "order_Receiving");
+			params.put("orders_id", orderId);
+
+			http.get(GlobalVars.url, params, new AjaxCallBack<String>() {
+				@Override
+				public void onFailure(Throwable t, int errorNo, String strMsg) {
+					super.onFailure(t, errorNo, strMsg);
+					Tools.DismissLoadingActivity(context);
+				}
+
+				@Override
+				public void onSuccess(String t) {
+					super.onSuccess(t);
+					Tools.DismissLoadingActivity(context);
+					LogUtils.i(t);
+					try {
+						JSONObject obj = new JSONObject(t);
+						if (obj.getInt("result") == 1) {
+							Tools.showTextToast(context, "收货成功");
+						} else {
+							Tools.showTextToast(context, "收货失败");
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			});
+
+		}
+
+		@Override
+		public void buy(String orderId) {
+
+			// http://103.27.7.116:83/json/json.aspx?op= buyGoodsPay&orders_id=1
+
+			Tools.ShowLoadingActivity(context);
+			AjaxParams params = new AjaxParams();
+			params.put("op", "buyGoodsPay");
+			params.put("orders_id", orderId);
+
+			http.get(GlobalVars.url, params, new AjaxCallBack<String>() {
+				@Override
+				public void onFailure(Throwable t, int errorNo, String strMsg) {
+					super.onFailure(t, errorNo, strMsg);
+					Tools.DismissLoadingActivity(context);
+				}
+
+				@Override
+				public void onSuccess(String t) {
+					super.onSuccess(t);
+					Tools.DismissLoadingActivity(context);
+					LogUtils.i(t);
+					try {
+						JSONObject obj = new JSONObject(t);
+						if (obj.getInt("result") == 1) {
+							Intent intent = new Intent();
+							intent.setAction("android.intent.action.VIEW");
+							Uri content_url = Uri.parse("");
+							intent.setData(content_url);
+							context.startActivity(intent);
+
+						} else {
+							Tools.showTextToast(context, "购买商品失败");
+						}
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			});
+
+		}
+	};
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_order_manage, null);
 		listView = (XListView) view.findViewById(R.id.listview);
 
+		adapter = new OutOrderAdapter(getActivity(), orderMap, operator);
 		listView.setAdapter(adapter);
 		listView.setXListViewListener(new IXListViewListener() {
 

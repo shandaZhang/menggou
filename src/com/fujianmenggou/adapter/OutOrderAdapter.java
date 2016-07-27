@@ -34,7 +34,6 @@ public class OutOrderAdapter extends BaseAdapter {
 			OrderManageOperator operator) {
 		this.context = context;
 		this.orderMap = orderMap;
-		orderIdList = new ArrayList<String>(orderMap.keySet());
 		this.operator = operator;
 	}
 
@@ -58,6 +57,7 @@ public class OutOrderAdapter extends BaseAdapter {
 		ViewHolder holder;
 		int status = 0;
 		double moneyPay = 0;
+		orderIdList = new ArrayList<String>(orderMap.keySet());
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.order_manage_item, null);
@@ -76,17 +76,6 @@ public class OutOrderAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-
-		GetInnerListDataListener listener = new GetInnerListDataListener(holder) {
-
-			@Override
-			public void updateView(int status, double moneyPay) {
-				holder.tvMoneyPay.setText("¥" + moneyPay);
-				setBtnTextAndClicker(holder.btnLeft, holder.btnRight, status,
-						orderIdList.get(this.position));
-			}
-
-		};
 		ArrayList<OrderList> orderLists = orderMap.get(orderIdList
 				.get(position));
 		InOrderAdapter adapter = new InOrderAdapter(context, orderLists);
@@ -96,7 +85,6 @@ public class OutOrderAdapter extends BaseAdapter {
 		for (OrderList item : orderLists) {
 			status = item.getStatus();
 			moneyPay += item.getPrice() * item.getNumber();
-
 		}
 		holder.tvMoneyPay.setText("¥" + moneyPay);
 		setBtnTextAndClicker(holder.btnLeft, holder.btnRight, status,
