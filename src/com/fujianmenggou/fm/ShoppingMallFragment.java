@@ -226,6 +226,7 @@ public class ShoppingMallFragment extends ViewPagerFragment implements
 		params.put("GoodsName", etSearch.getText().toString());
 
 		http.get(GlobalVars.url, params, new AjaxCallBack<String>() {
+		
 			@Override
 			public void onFailure(Throwable t, int errorNo, String strMsg) {
 				super.onFailure(t, errorNo, strMsg);
