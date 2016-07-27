@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewParent;
 import android.view.animation.AlphaAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -109,43 +110,13 @@ public class ShoppingMallFragment extends ViewPagerFragment implements
 			});
 
 			viewPager = (ViewPager) rootView.findViewById(R.id.pager);
-			viewPager.setAdapter(new PagerAdapter() {
-				// viewpager中的组件数量
-				@Override
-				public int getCount() {
-					return viewContainter.size();
-				}
-
-				// 滑动切换的时候销毁当前的组件
-				@Override
-				public void destroyItem(ViewGroup container, int position,
-						Object object) {
-					Log.e("menggou", "destory item");
-					((ViewPager) container).removeView(viewContainter
-							.get(position));
-				}
-
-				// 每次滑动的时候生成的组件
-				@Override
-				public Object instantiateItem(ViewGroup container, int position) {
-					Log.e("menggou", "instantiateItem");
-					((ViewPager) container).addView(viewContainter
-							.get(position));
-					return viewContainter.get(position);
-				}
-
-				@Override
-				public boolean isViewFromObject(View arg0, Object arg1) {
-					return arg0 == arg1;
-				}
-
-			});
 			viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
 				@Override
 				public void onPageSelected(int position) {
 					ivDots.setImageResource(R.drawable.icon_pot_unselected);
-					ivDots = (ImageView) layoutDots.getChildAt(position);
+					ivDots = (ImageView) layoutDots.getChildAt(position
+							% viewContainter.size());
 					ivDots.setImageResource(R.drawable.icon_pot_selected);
 				}
 
@@ -228,7 +199,7 @@ public class ShoppingMallFragment extends ViewPagerFragment implements
 		params.put("GoodsName", etSearch.getText().toString());
 
 		http.get(GlobalVars.url, params, new AjaxCallBack<String>() {
-		
+
 			@Override
 			public void onFailure(Throwable t, int errorNo, String strMsg) {
 				super.onFailure(t, errorNo, strMsg);
@@ -277,8 +248,10 @@ public class ShoppingMallFragment extends ViewPagerFragment implements
 											+ " disconfig:" + displayConfig);
 							// bmp.display(iv, shopImg.getString("thumb_path"),
 							// displayConfig);
-							//bmp.display(iv, shopImg.getString("thumb_path"));
-							Glide.with(context).load(shopImg.getString("thumb_path")).into(iv);
+							// bmp.display(iv, shopImg.getString("thumb_path"));
+							Glide.with(context)
+									.load(shopImg.getString("thumb_path"))
+									.into(iv);
 							Log.e("menggou", "step 1");
 							ImageView dot = new ImageView(getActivity());
 							dot.setImageResource(R.drawable.icon_pot_unselected);
@@ -304,7 +277,7 @@ public class ShoppingMallFragment extends ViewPagerFragment implements
 						}
 						Log.e("menggou", "获取的回报处理了，等待界面更新");
 						adapter.notifyDataSetChanged();
-						viewPager.getAdapter().notifyDataSetChanged();
+						viewPager.setAdapter(new GoodsPagerAdapter());
 
 					}
 
@@ -322,4 +295,51 @@ public class ShoppingMallFragment extends ViewPagerFragment implements
 			getShopMallInfo();
 		}
 	}
+
+	private class GoodsPagerAdapter extends PagerAdapter {
+		// viewpager中的组件数量
+		@Override
+		public int getCount() {
+			return Integer.MAX_VALUE;
+		}
+
+		// 滑动切换的时候销毁当前的组件
+		@Override
+		public void destroyItem(ViewGroup container, int position, Object object) {
+			// Log.e("menggou", "destory item");
+			// ((ViewPager) container).removeView(viewContainter
+			// .get(position));
+		}
+
+		// 每次滑动的时候生成的组件
+		@Override
+		public Object instantiateItem(ViewGroup container, int position) {
+			// 对ViewPager页号求模取出View列表中要显示的项
+			position %= viewContainter.size();
+			if (position < 0) {
+				position = viewContainter.size() + position;
+			}
+			ImageView view = viewContainter.get(position);
+			// 如果View已经在之前添加到了一个父组件，则必须先remove，否则会抛出IllegalStateException。
+			ViewParent vp = view.getParent();
+			if (vp != null) {
+				ViewGroup parent = (ViewGroup) vp;
+				parent.removeView(view);
+			}
+			container.addView(view);
+			// add listeners here if necessary
+			return view;
+			// Log.e("menggou", "instantiateItem");
+			// ((ViewPager) container).addView(viewContainter
+			// .get(position));
+			// return viewContainter.get(position);
+		}
+
+		@Override
+		public boolean isViewFromObject(View arg0, Object arg1) {
+			return arg0 == arg1;
+		}
+
+	}
+
 }
