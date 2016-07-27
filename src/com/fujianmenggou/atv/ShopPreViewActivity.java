@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.fujianmenggou.R;
 import com.fujianmenggou.adapter.GoodsShoppingMallAdapter;
 import com.fujianmenggou.bean.GoodsList;
@@ -209,9 +210,13 @@ public class ShopPreViewActivity extends BaseActivity {
 						JSONArray shoplist = obj.getJSONArray("shoplist");
 						TextView tvShopName = (TextView) findViewById(R.id.tv_shop_name);
 						ImageView ivShopIcon = (ImageView) findViewById(R.id.iv_shop_icon);
-						bmp.display(ivShopIcon,
-								GlobalVars.baseUrl + shoplist.getString(0),
-								displayConfig);
+						// bmp.display(ivShopIcon,
+						// GlobalVars.baseUrl + shoplist.getString(0),
+						// displayConfig);
+						Glide.with(ShopPreViewActivity.this)
+								.load(GlobalVars.baseUrl
+										+ shoplist.getString(0))
+								.into(ivShopIcon);
 						tvShopName.setText(shoplist.getString(1));
 						for (int i = 0; i < shoplist.getJSONArray(2).length(); i++) {
 							JSONObject shopImg = shoplist.getJSONArray(2)
@@ -220,11 +225,15 @@ public class ShopPreViewActivity extends BaseActivity {
 									ShopPreViewActivity.this);
 							iv.setScaleType(ScaleType.FIT_XY);
 							viewContainter.add(iv);
-							bmp.display(
-									iv,
-									GlobalVars.baseUrl
-											+ shopImg.getString("thumb_path"),
-									displayConfig);
+							// bmp.display(
+							// iv,
+							// GlobalVars.baseUrl
+							// + shopImg.getString("thumb_path"),
+							// displayConfig);
+							Glide.with(ShopPreViewActivity.this)
+									.load(GlobalVars.baseUrl
+											+ shopImg.getString("thumb_path"))
+									.into(iv);
 							ImageView dot = new ImageView(
 									ShopPreViewActivity.this);
 							dot.setImageResource(R.drawable.icon_pot_unselected);

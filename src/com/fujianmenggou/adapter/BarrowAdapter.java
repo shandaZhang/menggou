@@ -2,6 +2,7 @@ package com.fujianmenggou.adapter;
 
 import java.util.ArrayList;
 
+import com.bumptech.glide.Glide;
 import com.fujianmenggou.R;
 import com.fujianmenggou.bean.OrderList;
 import com.fujianmenggou.fm.InfoMationChangedListener;
@@ -158,8 +159,8 @@ public class BarrowAdapter extends BaseAdapter {
 		holder.tvNumber.setText(data.getNumber() + "");
 		Log.e("menggou", "number: " + data.getNumber());
 		if (data.getUrl() != null)
-			bmp.display(holder.ivGoods, data.getUrl(), displayConfig);
-
+			// bmp.display(holder.ivGoods, data.getUrl(), displayConfig);
+			Glide.with(context).load(data.getUrl()).into(holder.ivGoods);
 		return convertView;
 	}
 

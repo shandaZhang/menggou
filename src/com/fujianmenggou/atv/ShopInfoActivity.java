@@ -24,6 +24,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.bumptech.glide.Glide;
 import com.fujianmenggou.R;
 import com.fujianmenggou.bean.ShopInfo;
 import com.fujianmenggou.util.BaseActivity;
@@ -155,16 +156,22 @@ public class ShopInfoActivity extends BaseActivity {
 		if (info.getShopIcon() != null) {
 			for (int i = 0; i < info.getShopIcon().size()
 					&& i < ivShopList.size(); i++) {
-				bmp.display(ivShopList.get(i), info.getShopIcon().get(i),
-						displayConfig);
+				// bmp.display(ivShopList.get(i), info.getShopIcon().get(i),
+				// displayConfig);
+				Glide.with(ShopInfoActivity.this)
+						.load(info.getShopIcon().get(i))
+						.into(ivShopList.get(i));
 			}
 		}
 		if (info.getShowIcon() != null) {
 			for (int i = 0; i < info.getShowIcon().size()
 					&& i < ivGoodsList.size(); i++) {
 				ivGoodsList.get(i).setVisibility(View.VISIBLE);
-				bmp.display(ivGoodsList.get(i), info.getShowIcon().get(i),
-						displayConfig);
+				// bmp.display(ivGoodsList.get(i), info.getShowIcon().get(i),
+				// displayConfig);
+				Glide.with(ShopInfoActivity.this)
+						.load(info.getShowIcon().get(i))
+						.into(ivGoodsList.get(i));
 			}
 		}
 		locateInMap(info.getLat(), info.getLng());

@@ -2,11 +2,11 @@ package com.fujianmenggou.adapter;
 
 import java.util.ArrayList;
 
-
-
+import com.bumptech.glide.Glide;
 import com.fujianmenggou.R;
 import com.fujianmenggou.bean.OrderList;
 import com.fujianmenggou.fm.GetInnerListDataListener;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,14 +20,10 @@ import android.widget.TextView;
 public class InOrderAdapter extends BaseAdapter {
 	private Context context;
 	private ArrayList<OrderList> orderLists;
-	private GetInnerListDataListener listener;
-	private int status = 0;
 
-	public InOrderAdapter(Context context, ArrayList<OrderList> orderLists,
-			GetInnerListDataListener listener) {
+	public InOrderAdapter(Context context, ArrayList<OrderList> orderLists) {
 		this.context = context;
 		this.orderLists = orderLists;
-		this.listener = listener;
 	}
 
 	@Override
@@ -65,18 +61,13 @@ public class InOrderAdapter extends BaseAdapter {
 		} else
 			holder = (ViewHolder) convertView.getTag();
 		OrderList data = orderLists.get(position);
-		status = data.getStatus();
-//		holder.tvDetails.get(i).setText(data.getDetail());
-//		holder.tvTitles.get(i).setText(data.getTitle());
-//		holder.tvPrices.get(i).setText(
-//				"¥" + data.getPrice() + "x" + data.getNumber());
-//		holder.tvPriceAlls.get(i).setText(
-//				data.getPrice() * data.getNumber() + "");
-//		holder.cbIsChecked.get(i).setChecked(data.isChecked());
-//		holder.ivGoods.get(i).setImageResource(R.drawable.goods);
-//		moneyPay += data.getPriceAll();
-		
-
+		holder.tvDetail.setText(data.getDetail());
+		holder.tvTitle.setText(data.getTitle());
+		holder.tvPrice.setText("¥" + data.getPrice() + "x" + data.getNumber());
+		holder.tvPriceAll.setText(data.getPrice() * data.getNumber() + "");
+		holder.cbIsChecked.setChecked(data.isChecked());
+		// holder.ivGoods.setImageResource(R.drawable.goods);
+		Glide.with(context).load(data.getUrl()).into(holder.ivGoods);
 		return convertView;
 	}
 

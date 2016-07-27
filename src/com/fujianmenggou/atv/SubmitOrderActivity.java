@@ -28,6 +28,7 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.AndroidAuthenticator;
+import com.bumptech.glide.Glide;
 import com.fujianmenggou.R;
 import com.fujianmenggou.adapter.OrderAdapter;
 import com.fujianmenggou.bean.OrderList;
@@ -238,7 +239,7 @@ public class SubmitOrderActivity extends BaseActivity {
 			CheckBox cbIsChecked = (CheckBox) goods.findViewById(R.id.cb);
 			View layout1 = goods.findViewById(R.id.layout1);
 			View layout2 = layout1.findViewById(R.id.layout2);
-			View iv = layout1.findViewById(R.id.iv_goods);
+			ImageView iv = (ImageView) layout1.findViewById(R.id.iv_goods);
 			cbIsChecked
 					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -273,7 +274,8 @@ public class SubmitOrderActivity extends BaseActivity {
 			data.setChecked(false);
 			cbIsChecked.setChecked(data.isChecked());
 			if (data.getUrl() != null)
-				bmp.display(iv, data.getUrl(), displayConfig);
+				// bmp.display(iv, data.getUrl(), displayConfig);
+				Glide.with(SubmitOrderActivity.this).load(data.getUrl()).into(iv);
 			Log.e("menggou", "moneyPay: " + moneyPay + " countAll: " + countAll);
 			if (data.isChecked()) {
 				Log.e("menggou", "number: " + data.getNumber());

@@ -1,7 +1,7 @@
 package com.fujianmenggou.fm;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.fujianmenggou.R;
 import com.fujianmenggou.adapter.OrderAdapter;
+import com.fujianmenggou.adapter.OutOrderAdapter;
 import com.fujianmenggou.atv.AddressActivity;
 import com.fujianmenggou.bean.OrderList;
 import com.fujianmenggou.ckw.PullToRefreshBase;
@@ -38,9 +39,9 @@ public class OrderFragment extends BaseFragment implements OnClickListener {
 
 	private XListView listView;
 	private static int[] statusAry = { 0, 1, 3, 5, 7 };
-	private HashMap<String, ArrayList<OrderList>> orderMap = new HashMap<String, ArrayList<OrderList>>();
+	private LinkedHashMap<String, ArrayList<OrderList>> orderMap = new LinkedHashMap<String, ArrayList<OrderList>>();
 	private static int statusCode;// 标明是什么标签下的fragment
-	private OrderAdapter adapter;
+	private OutOrderAdapter adapter;
 	private int pageIndex = 1;
 
 	public static OrderFragment newInstance(int status) {
@@ -62,7 +63,7 @@ public class OrderFragment extends BaseFragment implements OnClickListener {
 		View view = inflater.inflate(R.layout.fragment_order_manage, null);
 		listView = (XListView) view.findViewById(R.id.listview);
 
-		// listView.setAdapter(adapter);
+		listView.setAdapter(adapter);
 		listView.setXListViewListener(new IXListViewListener() {
 
 			@Override
@@ -165,8 +166,9 @@ public class OrderFragment extends BaseFragment implements OnClickListener {
 									orderLists);
 						}
 						Log.e("menggou", "orderMap.size(): " + orderMap.size());
-						adapter = new OrderAdapter(getActivity(), orderMap);
-						listView.setAdapter(adapter);
+						adapter.notifyDataSetChanged();
+						// adapter = new OrderAdapter(getActivity(), orderMap);
+						// listView.setAdapter(adapter);
 
 					}
 

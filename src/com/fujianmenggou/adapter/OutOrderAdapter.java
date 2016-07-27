@@ -56,6 +56,8 @@ public class OutOrderAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
+		int status = 0;
+		double moneyPay = 0;
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.order_manage_item, null);
@@ -87,11 +89,19 @@ public class OutOrderAdapter extends BaseAdapter {
 		};
 		ArrayList<OrderList> orderLists = orderMap.get(orderIdList
 				.get(position));
-		InOrderAdapter adapter = new InOrderAdapter(context, orderLists,
-				listener);
+		InOrderAdapter adapter = new InOrderAdapter(context, orderLists);
 		holder.lsv.setAdapter(adapter);
 		holder.tvOrderId.setText(orderIdList.get(position));
 		holder.tvGoodsAccount.setText("共" + orderLists.size() + "件商品");
+		for (OrderList item : orderLists) {
+			status = item.getStatus();
+			moneyPay += item.getPrice() * item.getNumber();
+
+		}
+		holder.tvMoneyPay.setText("¥" + moneyPay);
+		setBtnTextAndClicker(holder.btnLeft, holder.btnRight, status,
+				orderIdList.get(position));
+
 		return convertView;
 	}
 
